@@ -34,7 +34,7 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="$$.$$"
+            android:hint="@string/money"
             android:importantForAutofill="no"
             android:inputType="text" />
 
@@ -43,6 +43,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:importantForAutofill="no"
         android:orientation="horizontal">
 
         <TextView
@@ -60,8 +61,9 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="%%.%%"
-            android:inputType="text" />
+            android:hint="@string/percentage"
+            android:inputType="text"
+            tools:ignore="Autofill" />
 
     </LinearLayout>
 
@@ -75,6 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_weight="1"
+            android:importantForAutofill="no"
             android:text="@string/ahorros"
             android:textAlignment="textEnd"
             android:textSize="16sp" />
@@ -85,8 +88,9 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="%%.%%"
-            android:inputType="text" />
+            android:hint="@string/percentage"
+            android:inputType="text"
+            tools:ignore="Autofill" />
     </LinearLayout>
 
     <LinearLayout
@@ -109,15 +113,16 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="%%.%%"
-            android:inputType="text" />
+            android:hint="@string/percentage"
+            android:inputType="text"
+            tools:ignore="Autofill" />
     </LinearLayout>
 
     <Button
         android:id="@+id/button3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Calcular" />
+        android:text="@string/calcular" />
 
     <TextView
         android:id="@+id/textView29"

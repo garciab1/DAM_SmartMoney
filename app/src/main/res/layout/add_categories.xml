@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:ems="10"
-        android:hint="Nombre"
+        android:hint="@string/nombre"
         android:inputType="text" />
 
     <EditText
@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="90dp"
         android:ems="10"
-        android:hint="Descripción"
+        android:hint="@string/descripcion"
         android:inputType="text" />
 
     <LinearLayout
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="#1A611B"
-            android:text="OK" />
+            android:text="@string/ok" />
 
         <Button
             android:id="@+id/button8"
@@ -40,6 +40,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="@color/design_default_color_error"
-            android:text="X" />
+            android:text="@string/x" />
     </LinearLayout>
 </LinearLayout>

@@ -4,4 +4,19 @@
     <string name="total">Total:</string>
     <string name="ahorros">Ahorros:</string>
     <string name="inversion">Inversion:</string>
+    <string name="mes">Mes</string>
+    <string name="add">+Add</string>
+    <string name="add_symbol">+</string>
+    <string name="calcular">Calcular</string>
+    <string name="money">$$.$$</string>
+    <string name="percentage">%%.%%</string>
+    <string name="ok">OK</string>
+    <string name="x">X</string>
+    <string name="descripcion">Descripción</string>
+    <string name="nombre">Nombre</string>
+    <string name="money_space">$:</string>
+    <string name="nombre_space">Nombre:</string>
+    <string name="categoria">Categoria</string>
+    <string name="fecha">Fecha:</string>
+    <string name="fecha_space">AAAA/MM/DD</string>
 </resources>
