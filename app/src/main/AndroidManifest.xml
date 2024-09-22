@@ -13,6 +13,12 @@
         android:theme="@style/Theme.DAMSmartMoney"
         tools:targetApi="31">
         <activity
+            android:name=".Planning"
+            android:exported="false" />
+        <activity
+            android:name=".Expenses"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

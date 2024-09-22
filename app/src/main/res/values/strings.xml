@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">DAM-SmartMoney</string>
+    <string name="gastos_fijos">Gastos fijos:</string>
+    <string name="total">Total:</string>
+    <string name="ahorros">Ahorros:</string>
+    <string name="inversion">Inversion:</string>
 </resources>
