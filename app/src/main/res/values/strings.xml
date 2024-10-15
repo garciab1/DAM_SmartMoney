@@ -5,18 +5,28 @@
     <string name="ahorros">Ahorros:</string>
     <string name="inversion">Inversion:</string>
     <string name="mes">Mes</string>
-    <string name="add">+Add</string>
-    <string name="add_symbol">+</string>
+    <string name="add">+Agregar</string>
+    <string name="add_symbol" translatable="false">+</string>
     <string name="calcular">Calcular</string>
     <string name="money">$$.$$</string>
-    <string name="percentage">%%.%%</string>
-    <string name="ok">OK</string>
-    <string name="x">X</string>
+    <string name="percentage" translatable="false">%%.%%</string>
+    <string name="ok" translatable="false">OK</string>
+    <string name="x" translatable="false">X</string>
     <string name="descripcion">Descripción</string>
     <string name="nombre">Nombre</string>
     <string name="money_space">$:</string>
     <string name="nombre_space">Nombre:</string>
-    <string name="categoria">Categoria</string>
+    <string name="categoria">Categoria:</string>
     <string name="fecha">Fecha:</string>
     <string name="fecha_space">AAAA/MM/DD</string>
+    <string name="saldo_total">Saldo Total:</string>
+    <string name="categorias">Categorias</string>
+    <string name="image" translatable="false">Image</string>
+    <string name="actualizar_ingresos">Actualizar Ingresos</string>
+    <string name="razon">Razon</string>
+    <string name="monto">Monto:</string>
+    <string name="bienvenidos">Bienvenido</string>
+    <string name="gracias_por_descargar">Gracias por descargar</string>
+    <string name="billetera">Billetera</string>
+    <string name="ingresa_el_dinero_con_el_que_cuentas_en_efectivo_actualmente">Ingresa el dinero con el que cuentas en efectivo actualmente</string>
 </resources>

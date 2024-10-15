@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DAM-SmartMoney</string>
+    <string name="ahorros">Risparmi</string>
+    <string name="total">Totale</string>
+    <string name="mes">Mese</string>
+    <string name="add">+Aggiungere</string>
+    <string name="calcular">Calcolare</string>
+    <string name="descripcion">Descrizione</string>
+    <string name="nombre">Nome</string>
+    <string name="nombre_space">Nome:</string>
+    <string name="categoria">Categoria:</string>
+    <string name="fecha">Data:</string>
+    <string name="fecha_space">AAAA/MM/GG</string>
+    <string name="gastos_fijos">Spese Fisse:</string>
+    <string name="saldo_total">Saldo totale</string>
+    <string name="inversion">Investimento:</string>
+    <string name="categorias">Categorie</string>
+    <string name="money">€€:€€</string>
+    <string name="money_space">€:</string>
+    <string name="actualizar_ingresos">Aggiorna reddito</string>
+    <string name="razon">Ragione</string>
+    <string name="monto">Quantità:</string>
+    <string name="bienvenidos">Benvenuto</string>
+    <string name="gracias_por_descargar">Grazie per aver scaricato</string>
+    <string name="billetera">Portafoglio</string>
+    <string name="ingresa_el_dinero_con_el_que_cuentas_en_efectivo_actualmente">Inserisci il denaro che hai attualmente in contanti</string>
+</resources>
