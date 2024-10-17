@@ -24,6 +24,7 @@ public class Database extends SQLiteOpenHelper {
         //String CREATE_TABLE_CATEGORIA
         //String CREATE_TABLE_PAGOS
         //String CREATE_TABLE_HISTORIAL_INGRESOS
+
     }
 
     @Override
