@@ -12,7 +12,7 @@
     <string name="percentage" translatable="false">%%.%%</string>
     <string name="ok" translatable="false">OK</string>
     <string name="x" translatable="false">X</string>
-    <string name="descripcion">Descripción</string>
+    <string name="descripcion">Tipo de categoria</string>
     <string name="nombre">Nombre</string>
     <string name="money_space">$:</string>
     <string name="nombre_space">Nombre:</string>
@@ -29,4 +29,6 @@
     <string name="gracias_por_descargar">Gracias por descargar</string>
     <string name="billetera">Billetera</string>
     <string name="ingresa_el_dinero_con_el_que_cuentas_en_efectivo_actualmente">Ingresa el dinero con el que cuentas en efectivo actualmente</string>
+    <string name="enter_user_name">Ingrese su nombre</string>
+    <string name="btn_add_category">Añadir categoria +</string>
 </resources>

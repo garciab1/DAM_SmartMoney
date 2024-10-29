@@ -33,9 +33,17 @@ public class Intro extends AppCompatActivity {
             public void run() {
 
                 if(!Boton){
-                    Intent ventana2 = new Intent(Intro.this,MainActivity.class);
-                    startActivity(ventana2);
-                    finish();
+                    DatabaseHelper db = new DatabaseHelper(Intro.this);
+                    boolean verificacion = db.verificarnuevousuario();
+                    if (verificacion){
+                        Intent ventana1 = new Intent(Intro.this,MainActivity.class);
+                        startActivity(ventana1);
+                        finish();
+                    } else {
+                        Intent ventana_crear_monto = new Intent(Intro.this, welcome.class);
+                        startActivity(ventana_crear_monto);
+                        finish();
+                    }
                 }
 
             }

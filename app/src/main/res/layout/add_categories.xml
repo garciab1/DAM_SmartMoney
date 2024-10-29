@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:background="#0000BCD4"
+    android:padding="10dp"
     android:orientation="vertical">
 
     <EditText
-        android:id="@+id/editTextText9"
+        android:id="@+id/txt_categoria_nombre"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:ems="10"
@@ -14,12 +17,18 @@
         android:inputType="text" />
 
     <EditText
-        android:id="@+id/editTextText13"
+        android:id="@+id/txt_tipo_gasto"
         android:layout_width="match_parent"
         android:layout_height="90dp"
         android:ems="10"
         android:hint="@string/descripcion"
         android:inputType="text" />
+
+    <Button
+        android:id="@+id/btn_add_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Añadir imagen" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,7 +36,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button7"
+            android:id="@+id/btn_aceptar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -35,7 +44,7 @@
             android:text="@string/ok" />
 
         <Button
-            android:id="@+id/button8"
+            android:id="@+id/btn_cancelar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

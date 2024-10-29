@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/welcome"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
@@ -90,15 +91,30 @@
         android:layout_height="100dp"
         android:layout_marginBottom="20dp"
         android:ems="10"
-        android:hint="@string/money"
+        android:hint="@string/enter_user_name"
+        android:importantForAutofill="no"
         android:inputType="text"
         android:textSize="24sp" />
 
+    <EditText
+        android:id="@+id/editTextText4"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginBottom="20dp"
+        android:ems="10"
+        android:hint="@string/money"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:textSize="24sp"
+        />
+
     <Button
         android:id="@+id/button10"
+        android:onClick="crear"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:backgroundTint="#1A611B"
-        android:text="@string/ok" />
+        android:text="@string/ok"
+        />
 
 </LinearLayout>

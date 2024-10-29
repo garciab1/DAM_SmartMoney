@@ -31,7 +31,7 @@ public class Database extends SQLiteOpenHelper {
 
         String CREATE_TABLE_CATEGORIA = "CREATE TABLE Categoria " +
                 "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "categoria_nombre TEXT NOT NULL, " +
+                "categoria_nombre TEXT NOT NULL UNIQUE, " +
                 "tipo_gasto TEXT NOT NULL, " +
                 "imagen_uri TEXT)";
 
@@ -59,6 +59,11 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_CATEGORIA);
         db.execSQL(CREATE_TABLE_GASTO);
         db.execSQL(CREATE_TABLE_HISTORIAL_INGRESOS);
+
+        //Default para categoria
+        String INSERT_DEFAULT_CATEGORIA = "INSERT INTO Categoria (categoria_nombre, tipo_gasto, imagen_uri) " +
+                "VALUES ('Importante', 'Importante', NULL)";
+        db.execSQL(INSERT_DEFAULT_CATEGORIA);
     }
 
     @Override
