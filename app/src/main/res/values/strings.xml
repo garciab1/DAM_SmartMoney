@@ -11,7 +11,7 @@
     <string name="money">$$.$$</string>
     <string name="percentage" translatable="false">%%.%%</string>
     <string name="ok" translatable="false">OK</string>
-    <string name="x" translatable="false">X</string>
+    <string name="x">Cancelar</string>
     <string name="descripcion">Tipo de categoria</string>
     <string name="nombre">Nombre</string>
     <string name="money_space">$:</string>
@@ -31,4 +31,6 @@
     <string name="ingresa_el_dinero_con_el_que_cuentas_en_efectivo_actualmente">Ingresa el dinero con el que cuentas en efectivo actualmente</string>
     <string name="enter_user_name">Ingrese su nombre</string>
     <string name="btn_add_category">Añadir categoria +</string>
+    <string name="important_expence_date">dd/MM/yyyy</string>
+    <string name="cantidad">Cantidad</string>
 </resources>

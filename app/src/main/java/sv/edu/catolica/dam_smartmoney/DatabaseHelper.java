@@ -5,7 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class DatabaseHelper {
     private final Context context;
@@ -79,8 +81,23 @@ public class DatabaseHelper {
         return resultado_ingreso != -1;
     }
 
+    //Para el metodo de abajo obtener la categorias
+    public List<String> getCategorias(){
+        List<String> categorias = new ArrayList<>();
+        Database database = new Database(context);
+        SQLiteDatabase db = database.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT categoria_nombre FROM Categoria", null);
+        if (cursor.moveToFirst()){
+            do{
+                categorias.add(cursor.getString(0));
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        return categorias;
+    }
+
     //Insertar datos para la tabla gastos, Fechas, Categoria (Solo obtiene su id) pagos
-    public void crear_gasto(Date fecha, String nombre_gasto, Double cantidad, String tipo) {
+    public boolean crear_gasto(Date fecha, String nombre_gasto, Double cantidad, String tipo) {
         Database database = new Database(context);
         SQLiteDatabase db = database.getWritableDatabase();
 
@@ -116,9 +133,27 @@ public class DatabaseHelper {
         datos_gasto.put("fecha_gasto", resultado_fecha);
         datos_gasto.put("categoria_gasto", id_categoria);
         datos_gasto.put("pago_gasto", resultado_pagos);
-        db.insert("Gasto", null, datos_gasto);
-
+        long resultado_categoria_insert = db.insert("Gasto", null, datos_gasto);
         db.close();
+
+        return resultado_categoria_insert != -1;
+    }
+
+    public List<String> get_pagos_importantes(){
+        List<String> pagos_importantes = new ArrayList<>();
+        Database database = new Database(context);
+        SQLiteDatabase db = database.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT Gasto.nombre_gasto, Pagos.cantidad FROM Gasto JOIN Pagos ON Pagos.id == Gasto.pago_gasto ", null);
+        if (cursor.moveToFirst()){
+            do{
+                String nombreGasto = cursor.getString(0);
+                double cantidad = cursor.getDouble(1);
+                pagos_importantes.add("Gasto: " + nombreGasto + ", Cantidad: " + cantidad);
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        return pagos_importantes;
     }
 
 }

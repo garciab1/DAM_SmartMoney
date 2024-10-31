@@ -1,13 +1,19 @@
 package sv.edu.catolica.dam_smartmoney;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.icu.util.Calendar;
+import android.net.ParseException;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,13 +32,20 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Date;
+import java.util.List;
 import java.util.Objects;
+import android.widget.DatePicker;
+
+import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1;
     private Uri selectedImageUri = null;
+    private TextView textViewFecha;
     private TextView saldo_total;
+    public ListView Lista_pagos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        Lista_pagos = findViewById(R.id.list_pagos);
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (Objects.requireNonNull(item.getTitle()).toString()) {
@@ -65,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
         saldo_total = findViewById(R.id.textView16);
         get_money();
+        get_important_expences();
     }
 
     @SuppressLint("DefaultLocale")
@@ -126,6 +141,101 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public void show_important_expences(View v){
+        LayoutInflater inflater = getLayoutInflater();
+        View vista = inflater.inflate(R.layout.add_important_expenses, null);
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        dialogBuilder.setView(vista);
+
+        // Crear el dialogo
+        AlertDialog dialog = dialogBuilder.create();
+        dialog.show();
+
+        Button btn_cancel = vista.findViewById(R.id.btn_important_expences_cancel);
+        Button btn_ok = vista.findViewById(R.id.btn_important_expences_ok);
+        textViewFecha = vista.findViewById(R.id.textView_fecha);
+
+        textViewFecha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePickerDialog dialog = new DatePickerDialog(MainActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                        textViewFecha.setText(String.format("%02d/%02d/%04d", day, month + 1, year));
+                    }
+                }, 2024, 11, 1);
+                dialog.show();
+            }
+        });
+
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        btn_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TextView nombre_add = vista.findViewById(R.id.txt_nombre_important_expence);
+                EditText cantidadField = vista.findViewById(R.id.txt_cantidad_important_expence);
+
+                String nombreGasto = nombre_add.getText().toString();
+                String fechaText = textViewFecha.getText().toString();
+                String tipoPago = "Importante"; // Aquí lo ajustas si tienes otro valor en mente
+
+                if (nombreGasto.isEmpty()) {
+                    mensajemanager("Por favor, ingresa un nombre para el gasto");
+                    return;
+                }
+
+                double cantidad = 0;
+                try {
+                    cantidad = Double.parseDouble(cantidadField.getText().toString());
+                } catch (NumberFormatException e) {
+                    mensajemanager("Por favor, ingresa una cantidad válida");
+                    return;
+                }
+
+                // Convertir la fecha a un objeto Date
+                Date fecha = null;
+                try {
+                    // Cambiar el formato "dd/MM/yyyy" y asegurarse de pasar 'fechaText' (la fecha introducida)
+                    fecha = new java.text.SimpleDateFormat("dd/MM/yyyy").parse(fechaText);
+                } catch (java.text.ParseException e) {
+                    mensajemanager("Fecha inválida");
+                    return;
+                }
+
+                // Llamar al método crear_gasto con los datos obtenidos
+                DatabaseHelper db = new DatabaseHelper(MainActivity.this);
+                boolean crear = db.crear_gasto(fecha, nombreGasto, cantidad, tipoPago);
+                if (crear){
+                    nombre_add.setText("");
+                    cantidadField.setText("");
+                    textViewFecha.setText("dd/MM/yyyy");
+                    mensajemanager("Gasto creado correctamente");
+
+                    get_important_expences();
+                } else {
+                    mensajemanager("Ocurrio un error al crear el gasto");
+                }
+            }
+        });
+    }
+
+    private void get_important_expences(){
+        DatabaseHelper db = new DatabaseHelper(MainActivity.this);
+        List<String> pagosImportantes = db.get_pagos_importantes();
+
+        // Crear un ArrayAdapter para mostrar los pagos en la ListView
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, pagosImportantes);
+        Lista_pagos.setAdapter(adapter);
+    }
+
+    //Metodos aparte
     private void pickimage(){
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");

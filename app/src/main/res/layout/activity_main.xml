@@ -81,7 +81,7 @@
         </LinearLayout>
 
         <ListView
-            android:id="@+id/listView"
+            android:id="@+id/list_pagos"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1" />
@@ -94,6 +94,7 @@
 
             <Button
                 android:id="@+id/button"
+                android:onClick="show_important_expences"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/add_symbol"
