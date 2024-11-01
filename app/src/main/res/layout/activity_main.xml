@@ -68,7 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/saldo_total"
-                android:textSize="34sp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/textView16"
@@ -77,14 +77,15 @@
                 android:layout_weight="1"
                 android:gravity="end"
                 android:text="$400.00"
-                android:textSize="34sp" />
+                android:textSize="24sp" />
         </LinearLayout>
 
         <ListView
             android:id="@+id/list_pagos"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -33,4 +33,7 @@
     <string name="btn_add_category">Añadir categoria +</string>
     <string name="important_expence_date">dd/MM/yyyy</string>
     <string name="cantidad">Cantidad</string>
+    <string name="returnBTN">Volver</string>
+    <string name="btn_categorias_page">Ver Categorias</string>
+    <string name="txtCategoria">Categorias</string>
 </resources>

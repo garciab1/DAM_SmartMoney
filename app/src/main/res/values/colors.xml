@@ -16,4 +16,10 @@
     <color name="E3">#EF5350</color>
     <color name="E4">#29B6F6</color>
     <color name="E5">#F7FF00</color>
+
+    <color name="color1">#FF5733</color>
+    <color name="color2">#33FF57</color>
+    <color name="color3">#3357FF</color>
+    <color name="color4">#FF33A1</color>
+    <color name="color5">#A133FF</color>
 </resources>

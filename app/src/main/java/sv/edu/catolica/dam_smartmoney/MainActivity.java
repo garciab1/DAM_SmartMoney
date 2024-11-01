@@ -24,6 +24,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.LayoutInflaterCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView textViewFecha;
     private TextView saldo_total;
     public ListView Lista_pagos;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -211,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
 
                 // Llamar al método crear_gasto con los datos obtenidos
                 DatabaseHelper db = new DatabaseHelper(MainActivity.this);
-                boolean crear = db.crear_gasto(fecha, nombreGasto, cantidad, tipoPago);
+                boolean crear = db.crear_gasto(fecha, nombreGasto, cantidad, tipoPago, "Importante");
                 if (crear){
                     nombre_add.setText("");
                     cantidadField.setText("");

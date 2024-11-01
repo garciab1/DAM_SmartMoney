@@ -4,10 +4,15 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import sv.edu.catolica.dam_smartmoney.Classes.Categoria;
 
 public class DatabaseHelper {
     private final Context context;
@@ -51,19 +56,38 @@ public class DatabaseHelper {
     }
 
     //Obtener el saldo del ultimo usuario para evitar fallos
-    public double get_saldo(){
+    public double get_saldo() {
         Database database = new Database(context);
         SQLiteDatabase db = database.getWritableDatabase();
-        Double dinero = null;
+        double saldo = 0.0;
 
-        Cursor cursor = db.rawQuery("SELECT dinero FROM Usuarios WHERE dinero IS NOT NULL ORDER BY id DESC LIMIT 1", null);
-        if (cursor.moveToFirst()){
-            dinero = cursor.getDouble(0);
+        try {
+            // Obtener el último valor de dinero en la tabla Usuarios
+            Cursor cursorDinero = db.rawQuery("SELECT dinero FROM Usuarios WHERE dinero IS NOT NULL ORDER BY id DESC LIMIT 1", null);
+            if (cursorDinero.moveToFirst()) {
+                saldo = cursorDinero.getDouble(0);
+            }
+            cursorDinero.close();
+
+            // Obtener el total de los gastos en la tabla Pagos
+            Cursor cursorGastos = db.rawQuery("SELECT SUM(cantidad) FROM Pagos", null);
+            double totalGastos = 0.0;
+            if (cursorGastos.moveToFirst()) {
+                totalGastos = cursorGastos.getDouble(0);
+            }
+            cursorGastos.close();
+
+            // Calcular el saldo final descontando los gastos del dinero del usuario
+            saldo -= totalGastos;
+        } catch (Exception e) {
+            Log.e("get_saldo", "Error al obtener el saldo: ", e);
+        } finally {
+            db.close();
         }
-        cursor.close();
-        db.close();
-        return dinero;
+
+        return saldo;
     }
+
 
     //Insertar categorias
     public boolean crear_categorias(String categoria_nombre, String tipo_gasto, String uri){
@@ -96,47 +120,75 @@ public class DatabaseHelper {
         return categorias;
     }
 
-    //Insertar datos para la tabla gastos, Fechas, Categoria (Solo obtiene su id) pagos
-    public boolean crear_gasto(Date fecha, String nombre_gasto, Double cantidad, String tipo) {
+    //Para el metodo de abajo obtener la categorias con todo y img
+    public List<Categoria> getCategoriasIMG() {
+        List<Categoria> categorias = new ArrayList<>();
+        Database database = new Database(context);
+        SQLiteDatabase db = database.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT categoria_nombre, imagen_uri FROM Categoria", null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                String CategoriaName = cursor.getString(0);
+                String ImagenURI = cursor.getString(1);
+
+                categorias.add(new Categoria(CategoriaName, ImagenURI));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return categorias;
+    }
+
+    public boolean crear_gasto(Date fecha, String nombreGasto, Double cantidad, String tipo, String categoria) {
         Database database = new Database(context);
         SQLiteDatabase db = database.getWritableDatabase();
+        boolean resultado = false;
 
-        // Formato para la fecha
-        ContentValues datos_fecha = new ContentValues();
-        datos_fecha.put("fecha", new java.text.SimpleDateFormat("yyyy-MM-dd").format(fecha));
-        datos_fecha.put("nivel_importancia", "Alta"); // Ajusta según tu lógica
-        long resultado_fecha = db.insert("Fechas", null, datos_fecha);
+        try {
+            // Insertar la fecha en la tabla Fechas
+            ContentValues datosFecha = new ContentValues();
+            datosFecha.put("fecha", new java.text.SimpleDateFormat("yyyy-MM-dd").format(fecha));
+            datosFecha.put("nivel_importancia", "Alta"); // Ajusta si necesitas otra lógica
+            long idFecha = db.insert("Fechas", null, datosFecha);
+            if (idFecha == -1) throw new RuntimeException("Error al insertar fecha en la tabla Fechas.");
 
-        // Obtener el id de la categoría "Importante"
-        Cursor categoria_importante = db.rawQuery("SELECT id FROM Categoria WHERE categoria_nombre = 'Importante'", null);
-        int id_categoria = -1;
-        if (categoria_importante.moveToFirst()) {
-            id_categoria = categoria_importante.getInt(0);
-        }
-        categoria_importante.close();
+            // Obtener el ID de la categoría
+            int idCategoria = obtenerIdCategoria(db, categoria != null ? categoria : "Importante");
+            if (idCategoria == -1) throw new RuntimeException("Categoría no encontrada en la tabla Categoria.");
 
-        if (id_categoria == -1) {
-            // Manejar el caso donde no se encuentra la categoría (puedes lanzar un error o usar un valor predeterminado)
+            // Insertar datos en la tabla Pagos
+            ContentValues datosPagos = new ContentValues();
+            datosPagos.put("cantidad", cantidad);
+            datosPagos.put("tipo_pago", tipo);
+            long idPago = db.insert("Pagos", null, datosPagos);
+            if (idPago == -1) throw new RuntimeException("Error al insertar pago en la tabla Pagos.");
+
+            // Insertar datos en la tabla Gasto
+            ContentValues datosGasto = new ContentValues();
+            datosGasto.put("nombre_gasto", nombreGasto);
+            datosGasto.put("fecha_gasto", idFecha);
+            datosGasto.put("categoria_gasto", idCategoria);
+            datosGasto.put("pago_gasto", idPago);
+            long resultadoGasto = db.insert("Gasto", null, datosGasto);
+
+            resultado = resultadoGasto != -1;
+        } catch (Exception e) {
+            Log.e("crear_gasto", "Error al crear el gasto: ", e);
+        } finally {
             db.close();
-            throw new RuntimeException("Categoría 'Importante' no encontrada en la tabla Categoria.");
         }
+        return resultado;
+    }
 
-        // Insertar datos en la tabla Pagos
-        ContentValues datos_pagos = new ContentValues();
-        datos_pagos.put("cantidad", cantidad);
-        datos_pagos.put("tipo_pago", tipo);
-        long resultado_pagos = db.insert("Pagos", null, datos_pagos);
-
-        // Insertar en la tabla Gasto con las referencias obtenidas
-        ContentValues datos_gasto = new ContentValues();
-        datos_gasto.put("nombre_gasto", nombre_gasto);
-        datos_gasto.put("fecha_gasto", resultado_fecha);
-        datos_gasto.put("categoria_gasto", id_categoria);
-        datos_gasto.put("pago_gasto", resultado_pagos);
-        long resultado_categoria_insert = db.insert("Gasto", null, datos_gasto);
-        db.close();
-
-        return resultado_categoria_insert != -1;
+    private int obtenerIdCategoria(SQLiteDatabase db, String categoriaNombre) {
+        int idCategoria = -1;
+        Cursor cursor = db.rawQuery("SELECT id FROM Categoria WHERE categoria_nombre = ?", new String[]{categoriaNombre});
+        if (cursor.moveToFirst()) {
+            idCategoria = cursor.getInt(0);
+        }
+        cursor.close();
+        return idCategoria;
     }
 
     public List<String> get_pagos_importantes(){
@@ -154,6 +206,41 @@ public class DatabaseHelper {
         }
         cursor.close();
         return pagos_importantes;
+    }
+
+    //Metodos para ver los datos en la grafica
+    public float GetTotalGasto(){
+        Database database = new Database(context);
+        SQLiteDatabase db = database.getReadableDatabase();
+
+        // Obtiene el dinero total del usuario más reciente
+        Cursor cursor = db.rawQuery("SELECT dinero FROM Usuarios ORDER BY id DESC LIMIT 1", null);
+        float totalGasto = 0;
+        if (cursor.moveToFirst()) {
+            totalGasto = cursor.getFloat(0);
+        }
+        cursor.close();
+        return totalGasto;
+    }
+
+    public Map<String, Float> getGastoPorCategoria(){
+        Database database = new Database(context);
+        SQLiteDatabase db = database.getReadableDatabase();
+
+        Map<String, Float> gastosPorCategoria = new HashMap<>();
+        Cursor cursor = db.rawQuery("SELECT Categoria.categoria_nombre, SUM(Pagos.cantidad) " +
+                "FROM Gasto " +
+                "JOIN Categoria ON Gasto.categoria_gasto = Categoria.id " +
+                "JOIN Pagos ON Gasto.pago_gasto = Pagos.id " +
+                "GROUP BY Categoria.categoria_nombre", null);
+
+        while (cursor.moveToNext()) {
+            String categoria = cursor.getString(0);
+            float cantidad = cursor.getFloat(1);
+            gastosPorCategoria.put(categoria, cantidad);
+        }
+        cursor.close();
+        return gastosPorCategoria;
     }
 
 }

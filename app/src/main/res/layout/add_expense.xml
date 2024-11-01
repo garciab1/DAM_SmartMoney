@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical">
 
     <LinearLayout
@@ -12,7 +11,6 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView25"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_weight="1"
@@ -21,7 +19,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/editTextText8"
+            android:id="@+id/txt_expence_name"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_weight="1"
@@ -37,32 +35,16 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/editTextText10"
-            android:layout_width="wrap_content"
-            android:layout_height="90dp"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="@string/descripcion"
-            android:inputType="text" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
         <TextView
-            android:id="@+id/textView31"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_weight="1"
-            android:text="@string/money_space"
+            android:text="@string/cantidad"
             android:textAlignment="textEnd"
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/editTextText11"
+            android:id="@+id/txt_cantidad_expence"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_weight="1"
@@ -76,21 +58,45 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/editTextText12"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="30dp"
             android:layout_weight="1"
-            android:ems="10"
-            android:hint="@string/categoria"
-            android:inputType="text" />
+            android:text="@string/fecha"
+            android:textAlignment="textEnd"
+            android:textSize="20sp"
+            />
 
-        <Button
-            android:id="@+id/button6"
-            android:layout_width="10dp"
+        <TextView
+            android:id="@+id/fecha_expence"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:text="@string/important_expence_date"
+            android:padding="8dp"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
             android:layout_weight="1"
-            android:text="@string/add_symbol" />
+            android:text="Categoria"
+            android:textAlignment="textEnd"
+            android:textSize="20sp" />
+
+        <Spinner
+            android:id="@+id/spinner_categoria"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
     </LinearLayout>
 
     <LinearLayout
@@ -99,7 +105,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button9"
+            android:id="@+id/btn_ok_expence"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -107,7 +113,7 @@
             android:text="@string/ok" />
 
         <Button
-            android:id="@+id/button11"
+            android:id="@+id/btn_cancel_expence"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
