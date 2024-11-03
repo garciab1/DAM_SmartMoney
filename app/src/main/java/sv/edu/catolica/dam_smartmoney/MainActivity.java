@@ -7,10 +7,12 @@ import android.icu.util.Calendar;
 import android.net.ParseException;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -18,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -33,8 +36,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import android.widget.DatePicker;
 
@@ -47,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView textViewFecha;
     private TextView saldo_total;
     public ListView Lista_pagos;
-    private RecyclerView recyclerView;
+    public CalendarView calendarView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +67,34 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         Lista_pagos = findViewById(R.id.list_pagos);
+        calendarView = findViewById(R.id.calendarViewMain);
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int dayOfMonth) {
+                // Formatear la fecha seleccionada como "yyyy-MM-dd"
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(year, month, dayOfMonth);
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                String fechaSeleccionada = dateFormat.format(calendar.getTime());
+
+                // Consultar si hay un evento en la fecha seleccionada
+                DatabaseHelper db = new DatabaseHelper(MainActivity.this);
+                String evento = db.ObtenerEventoFecha(fechaSeleccionada);
+                if (evento != null) {
+                    // Si hay evento, abrir la actividad de detalle
+                    Intent intent = new Intent(MainActivity.this, activity_detalle_evento.class);
+                    intent.putExtra("fecha", fechaSeleccionada);
+                    intent.putExtra("evento", evento);
+                    startActivity(intent);
+                } else {
+                    // Si no hay evento, mostrar Toast
+                    int duracion = 800;
+                    Toast toast = Toast.makeText(MainActivity.this, "Nada en este día", Toast.LENGTH_SHORT);
+                    toast.show();
+                    new Handler().postDelayed(toast::cancel, duracion);
+                }
+            }
+        });
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (Objects.requireNonNull(item.getTitle()).toString()) {
@@ -82,6 +115,12 @@ public class MainActivity extends AppCompatActivity {
         saldo_total = findViewById(R.id.textView16);
         get_money();
         get_important_expences();
+        FechaActual();
+    }
+
+    private void FechaActual(){
+        long fechaactual = System.currentTimeMillis();
+        calendarView.setDate(fechaactual, false, true);
     }
 
     @SuppressLint("DefaultLocale")
@@ -134,6 +173,8 @@ public class MainActivity extends AppCompatActivity {
 
                 if (verificacion_crear_cat){
                     mensajemanager("La creacion de la categoria a sido exitosa");
+                    btncategoria.setText("");
+                    btntipo.setText("");
                     selectedImageUri = null;
                 }else{
                     mensajemanager("Ocurrio un error al mostrar la categoria");
@@ -161,12 +202,18 @@ public class MainActivity extends AppCompatActivity {
         textViewFecha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Obtener la fecha actual
+                Calendar calendar = Calendar.getInstance();
+                int year = calendar.get(Calendar.YEAR);
+                int month = calendar.get(Calendar.MONTH);
+                int day = calendar.get(Calendar.DAY_OF_MONTH);
+
                 DatePickerDialog dialog = new DatePickerDialog(MainActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                         textViewFecha.setText(String.format("%02d/%02d/%04d", day, month + 1, year));
                     }
-                }, 2024, 11, 1);
+                }, year, month, day);
                 dialog.show();
             }
         });
@@ -181,12 +228,15 @@ public class MainActivity extends AppCompatActivity {
         btn_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                DatabaseHelper db = new DatabaseHelper(MainActivity.this);
+
                 TextView nombre_add = vista.findViewById(R.id.txt_nombre_important_expence);
                 EditText cantidadField = vista.findViewById(R.id.txt_cantidad_important_expence);
 
                 String nombreGasto = nombre_add.getText().toString();
                 String fechaText = textViewFecha.getText().toString();
                 String tipoPago = "Importante"; // Aquí lo ajustas si tienes otro valor en mente
+                double SaldoTotal = db.get_saldo();
 
                 if (nombreGasto.isEmpty()) {
                     mensajemanager("Por favor, ingresa un nombre para el gasto");
@@ -201,6 +251,11 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
+                if (cantidad > SaldoTotal){
+                    mensajemanager("No hay suficiente saldo para procesar la transaccion");
+                    return;
+                }
+
                 // Convertir la fecha a un objeto Date
                 Date fecha = null;
                 try {
@@ -212,7 +267,6 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 // Llamar al método crear_gasto con los datos obtenidos
-                DatabaseHelper db = new DatabaseHelper(MainActivity.this);
                 boolean crear = db.crear_gasto(fecha, nombreGasto, cantidad, tipoPago, "Importante");
                 if (crear){
                     nombre_add.setText("");
@@ -221,6 +275,7 @@ public class MainActivity extends AppCompatActivity {
                     mensajemanager("Gasto creado correctamente");
 
                     get_important_expences();
+                    get_money();
                 } else {
                     mensajemanager("Ocurrio un error al crear el gasto");
                 }

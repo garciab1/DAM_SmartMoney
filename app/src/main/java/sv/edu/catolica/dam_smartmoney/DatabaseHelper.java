@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.provider.ContactsContract;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -110,7 +111,7 @@ public class DatabaseHelper {
         List<String> categorias = new ArrayList<>();
         Database database = new Database(context);
         SQLiteDatabase db = database.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT categoria_nombre FROM Categoria", null);
+        Cursor cursor = db.rawQuery("SELECT categoria_nombre FROM Categoria WHERE categoria_nombre != ?", new String[] {"Importante"});
         if (cursor.moveToFirst()){
             do{
                 categorias.add(cursor.getString(0));
@@ -223,6 +224,7 @@ public class DatabaseHelper {
         return totalGasto;
     }
 
+    //Mapeo de los gastos segun las categorias
     public Map<String, Float> getGastoPorCategoria(){
         Database database = new Database(context);
         SQLiteDatabase db = database.getReadableDatabase();
@@ -243,4 +245,56 @@ public class DatabaseHelper {
         return gastosPorCategoria;
     }
 
+    //Obtener los datos de los gastos con catgoria para mostrarlos en expences
+    public List<String> getCategoriaExpences(){
+        Database database = new Database(context);
+        SQLiteDatabase db = database.getReadableDatabase();
+
+        List<String> datos = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT Gasto.nombre_gasto, Categoria.categoria_nombre FROM Gasto " +
+                "JOIN Categoria ON Categoria.id = Gasto.categoria_gasto", null);
+
+        while (cursor.moveToNext()){
+            String Gasto = cursor.getString(0);
+            String Categoria = cursor.getString(1);
+            datos.add("Gasto:" + Gasto + "," + "Categoria: " + Categoria);
+        }
+
+        return datos;
+    }
+
+    //Ver el detalle del calendario
+    public String ObtenerEventoFecha(String fechaSeleccionada) {
+        Database database = new Database(context);
+        SQLiteDatabase db = database.getReadableDatabase();
+        StringBuilder gastoDetalles = new StringBuilder();
+
+        String query = "SELECT Gasto.nombre_gasto, Pagos.cantidad, Fechas.fecha FROM Fechas " +
+                "JOIN Gasto ON Gasto.fecha_gasto = Fechas.id " +
+                "JOIN Pagos ON Pagos.id = Gasto.pago_gasto " +
+                "WHERE Fechas.fecha = ?";
+
+        Cursor cursor = db.rawQuery(query, new String[]{fechaSeleccionada});
+
+        // Verificar si hay resultados
+        if (cursor.moveToFirst()) {
+            do {
+                // Obtener los valores de cada columna
+                String nombreGasto = cursor.getString(cursor.getColumnIndexOrThrow("nombre_gasto"));
+                String cantidad = cursor.getString(cursor.getColumnIndexOrThrow("cantidad"));
+                String fecha = cursor.getString(cursor.getColumnIndexOrThrow("fecha"));
+
+                // Construir una cadena con los detalles
+                gastoDetalles.append("Nombre del gasto: ").append(nombreGasto).append("\n");
+                gastoDetalles.append("Cantidad: ").append(cantidad).append("\n");
+                gastoDetalles.append("Fecha: ").append(fecha).append("\n\n");
+            } while (cursor.moveToNext());
+        } else {
+            cursor.close();
+            return null;
+        }
+
+        cursor.close();
+        return gastoDetalles.toString();
+    }
 }

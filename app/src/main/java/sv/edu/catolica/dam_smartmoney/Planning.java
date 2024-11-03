@@ -2,6 +2,7 @@ package sv.edu.catolica.dam_smartmoney;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,6 +44,11 @@ public class Planning extends AppCompatActivity {
         });
 
         bottomNavigationView.setSelectedItemId(R.id.navigation_profile);
+
+    }
+
+    public void CalcularGastos(View view) {
+        DatabaseHelper db = new DatabaseHelper(Planning.this);
 
     }
 }

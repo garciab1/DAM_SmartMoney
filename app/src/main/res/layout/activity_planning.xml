@@ -6,13 +6,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
     tools:context=".Planning"> <!-- Padding general -->
+
+
+    <!-- Toolbar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:elevation="4dp"
+            android:gravity="end"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:titleTextColor="@android:color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_planeacion_title"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                />
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="790dp"
+        android:layout_height="match_parent"
         android:layout_above="@+id/bottom_navigation"
+        android:layout_below="@+id/appBarLayout"
+        android:layout_marginTop="0dp"
         android:layout_marginBottom="0dp"
         android:orientation="vertical">
 
@@ -153,7 +183,7 @@
         <!-- Segunda CardView para mostrar detalles -->
 
         <Button
-            android:id="@+id/button3"
+            android:onClick="CalcularGastos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"

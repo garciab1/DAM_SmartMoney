@@ -3,6 +3,7 @@ package sv.edu.catolica.dam_smartmoney;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,21 +22,29 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.eazegraph.lib.charts.PieChart;
 import org.eazegraph.lib.models.PieModel;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
 
+import sv.edu.catolica.dam_smartmoney.Adapters.CategoriaAdapter;
+import sv.edu.catolica.dam_smartmoney.Classes.Categoria;
+
 public class Expenses extends AppCompatActivity {
 
     private PieChart pieChart;
+    private ListView Lista;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +58,7 @@ public class Expenses extends AppCompatActivity {
         });
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        Lista = findViewById(R.id.ListaExpences);
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (Objects.requireNonNull(item.getTitle()).toString()) {
@@ -65,6 +76,15 @@ public class Expenses extends AppCompatActivity {
 
         bottomNavigationView.setSelectedItemId(R.id.navigation_search);
         verDatos();
+        CargarLista();
+    }
+
+    private void CargarLista() {
+        DatabaseHelper db = new DatabaseHelper(Expenses.this);
+        List<String> ListaExpenses = db.getCategoriaExpences();
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, ListaExpenses);
+        Lista.setAdapter(adapter);
     }
 
     public void Crear_Gasto(View view) {
@@ -93,12 +113,18 @@ public class Expenses extends AppCompatActivity {
         fecha_expence.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Obtener la fecha actual
+                Calendar calendar = Calendar.getInstance();
+                int year = calendar.get(Calendar.YEAR);
+                int month = calendar.get(Calendar.MONTH);
+                int day = calendar.get(Calendar.DAY_OF_MONTH);
+
                 DatePickerDialog dialog = new DatePickerDialog(Expenses.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                         fecha_expence.setText(String.format("%02d/%02d/%04d", day, month + 1, year));
                     }
-                }, 2024, 11, 1);
+                }, year, month, day);
                 dialog.show();
             }
         });
@@ -121,6 +147,8 @@ public class Expenses extends AppCompatActivity {
                 String tipoPago = "No importante";
                 String categoria = spinnerCategoria.getSelectedItem().toString();
 
+                DatabaseHelper db = new DatabaseHelper(Expenses.this);
+                double DineroTotal = db.get_saldo();
 
                 if (nombreGasto.isEmpty()) {
                     mensajemanager("Por favor, ingresa un nombre para el gasto");
@@ -135,6 +163,11 @@ public class Expenses extends AppCompatActivity {
                     return;
                 }
 
+                if (cantidad > DineroTotal){
+                    mensajemanager("No hay suficiente saldo para procesar la transaccion");
+                    return;
+                }
+
                 // Convertir la fecha a un objeto Date
                 Date fecha = null;
                 try {
@@ -146,13 +179,14 @@ public class Expenses extends AppCompatActivity {
                 }
 
                 // Llamar al método crear_gasto con los datos obtenidos
-                DatabaseHelper db = new DatabaseHelper(Expenses.this);
                 boolean crear = db.crear_gasto(fecha, nombreGasto, cantidad, tipoPago, categoria);
                 if (crear){
                     nombre.setText("");
                     cantidadField.setText("");
                     fecha_expence.setText("dd/MM/yyyy");
+
                     mensajemanager("Gasto creado correctamente");
+                    startActivity(new Intent(Expenses.this, Expenses.class));
                 } else {
                     mensajemanager("Ocurrio un error al crear el gasto");
                 }
@@ -171,42 +205,54 @@ public class Expenses extends AppCompatActivity {
     }
 
     //La grafica :O
-    public void verDatos(){
+    public void verDatos() {
         PieChart pieChart = findViewById(R.id.piechart);
         DatabaseHelper gastoRepository = new DatabaseHelper(Expenses.this);
-        // Obtiene el gasto total y por categoría
+
         float totalGasto = gastoRepository.GetTotalGasto();
         Map<String, Float> gastoPorCategoria = gastoRepository.getGastoPorCategoria();
+        List<Categoria> listaCategorias = new ArrayList<>();
 
-        // Si el gasto total es cero, evita la división por cero
+        // Inicializar el mapa de colores
+        int[] categoriaColores = new int[colors.length];
+
         if (totalGasto == 0) {
-            // Añadir una sección con 100% asignado a "Sin Gastos"
             pieChart.addPieSlice(new PieModel("Sin Gastos", 100, Color.GRAY));
             pieChart.startAnimation();
             return;
         }
 
-        // Agrega cada categoría al gráfico de pastel
         for (Map.Entry<String, Float> entry : gastoPorCategoria.entrySet()) {
             String categoria = entry.getKey();
             float cantidad = entry.getValue();
             float porcentaje = (cantidad / totalGasto) * 100;
 
-            // Agrega la entrada al gráfico con un color específico
-            pieChart.addPieSlice(new PieModel(categoria, porcentaje, getColorForCategory(categoria)));
+            // Obtener el color para la categoría
+            int color = getColorForCategory(categoria);
+            pieChart.addPieSlice(new PieModel(categoria, porcentaje, color));
+
+            // Agregar el color al mapa
+            listaCategorias.add(new Categoria(categoria, null)); // Asumimos que aquí no tienes URI de imagen
+            categoriaColores[listaCategorias.size() - 1] = color; // Guardar el color correspondiente
         }
 
-        // Inicia la animación del gráfico de pastel
-        pieChart.startAnimation();
-    }
+        // Crear y asignar adaptador
+        RecyclerView recyclerView = findViewById(R.id.recyclerViewCategorias);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        CategoriaAdapter adapter = new CategoriaAdapter(this, listaCategorias, categoriaColores);
+        recyclerView.setAdapter(adapter);
 
+    }
 
     private int[] colors = {
             R.color.color1,
             R.color.color2,
             R.color.color3,
             R.color.color4,
-            R.color.color5
+            R.color.color5,
+            R.color.color6,
+            R.color.color5,
+            R.color.color8
     };
 
     private int getColorForCategory(String categoryName) {

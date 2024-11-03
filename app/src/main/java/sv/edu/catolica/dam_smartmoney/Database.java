@@ -76,4 +76,6 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS Historial_Ingresos");
         onCreate(db);
     }
+
+    
 }

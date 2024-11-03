@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import sv.edu.catolica.dam_smartmoney.Adapters.CategoriaAdapter;
+import sv.edu.catolica.dam_smartmoney.Adapters.VerCategoriaAdapter;
 import sv.edu.catolica.dam_smartmoney.Classes.Categoria;
 
 public class VerCategorias extends AppCompatActivity {
@@ -46,7 +47,7 @@ public class VerCategorias extends AppCompatActivity {
 
         DatabaseHelper database = new DatabaseHelper(this);
         List<Categoria> categorias = database.getCategoriasIMG();
-        CategoriaAdapter adapter = new CategoriaAdapter(this, categorias);
+        VerCategoriaAdapter adapter = new VerCategoriaAdapter(this, categorias);
         recyclerView.setAdapter(adapter);
     }
 }
