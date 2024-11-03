@@ -89,6 +89,27 @@ public class DatabaseHelper {
         return saldo;
     }
 
+    //Obtener el saldo total sin restar
+    public double getsaldototal(){
+        Database database = new Database(context);
+        SQLiteDatabase db = database.getWritableDatabase();
+        double saldo = 0.0;
+
+        try {
+            // Obtener el último valor de dinero en la tabla Usuarios
+            Cursor cursorDinero = db.rawQuery("SELECT dinero FROM Usuarios WHERE dinero IS NOT NULL ORDER BY id DESC LIMIT 1", null);
+            if (cursorDinero.moveToFirst()) {
+                saldo = cursorDinero.getDouble(0);
+            }
+            cursorDinero.close();
+        } catch (Exception e) {
+            Log.e("get_saldo", "Error al obtener el saldo: ", e);
+        } finally {
+            db.close();
+        }
+
+        return saldo;
+    }
 
     //Insertar categorias
     public boolean crear_categorias(String categoria_nombre, String tipo_gasto, String uri){

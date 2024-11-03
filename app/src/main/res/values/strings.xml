@@ -37,4 +37,5 @@
     <string name="btn_categorias_page">Ver Categorias</string>
     <string name="txtCategoria">Categorias</string>
     <string name="txt_planeacion_title">Planeacion</string>
+    <string name="_0">0</string>
 </resources>

@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txt_planeacion_title"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="24sp"
                 />
         </androidx.appcompat.widget.Toolbar>
@@ -50,7 +50,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewGraph"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             android:layout_marginBottom="16dp"
             android:elevation="10dp"
             app:cardCornerRadius="10dp"> <!-- Espacio inferior -->
@@ -66,7 +66,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
-                    android:padding="6dp" /> <!-- Márgenes uniformes -->
+                    android:padding="6dp" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -75,60 +75,19 @@
                     android:orientation="vertical"
                     android:padding="8dp"> <!-- Padding para el texto -->
 
-                    <!-- Detalles del gráfico -->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="4dp"
-                        android:text="@string/gastos_fijos" />
+                    <ListView
+                        android:id="@+id/lista_planning"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
 
-                    <View
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:background="@color/E1" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="4dp"
-                        android:text="@string/ahorros" />
-
-                    <View
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:background="@color/E2" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="4dp"
-                        android:text="@string/inversion" />
-
-                    <View
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:background="@color/E3" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="4dp"
-                        android:text="Restante" />
-
-                    <View
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:background="@color/E4" />
                 </LinearLayout>
-
             </LinearLayout>
-
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="0dp"
             android:elevation="10dp"
             app:cardCornerRadius="10dp">
 
@@ -156,39 +115,102 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/gastos_fijos"
+                    android:text="Dinero total"
                     android:textSize="18sp" />
 
+                <EditText
+                    android:id="@+id/txt_planning_dinero_total"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="0"
+                    android:hint="@string/_0"
+                    android:textIsSelectable="false"
+                    android:enabled="false"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/color_one"
+                    android:textSize="18sp"
+                    android:inputType="number"
+                    android:textStyle="bold" />
+
+                <!-- Gastos fijos -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textAlignment="textEnd"
+                    android:text="@string/gastos_fijos"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/txt_planning_gastos_fijos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/_0"
+                    android:textAlignment="textStart"
                     android:textColor="@color/color_one"
                     android:textSize="18sp"
+                    android:inputType="number"
                     android:textStyle="bold" />
 
-                <View
+                <!-- Ahorros -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ahorros"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/txt_planning_ahorros"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="@color/color_two" />
+                    android:layout_height="wrap_content"
+                    android:hint="@string/_0"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/color_one"
+                    android:textSize="18sp"
+                    android:inputType="number"
+                    android:textStyle="bold" />
 
-                <!-- Más TextViews similares -->
-                <!-- ... -->
+                <!-- Inversion -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Inversion"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/txt_planning_inversion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/_0"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/color_one"
+                    android:textSize="18sp"
+                    android:inputType="number"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Total sobrante"/>
+
+                <EditText
+                    android:id="@+id/TotalSobrante"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_0"
+                    android:enabled="false"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/color_one"
+                    android:textSize="18sp"
+                    android:inputType="number"
+                    android:textStyle="bold"/>
             </LinearLayout>
-
         </androidx.cardview.widget.CardView>
-
-        <!-- Segunda CardView para mostrar detalles -->
 
         <Button
             android:onClick="CalcularGastos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@string/calcular" /> <!-- Espacio superior -->
-
+            android:text="@string/calcular" />
     </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -197,5 +219,4 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:menu="@menu/bottom_navigation_menu" />
-
 </RelativeLayout>
