@@ -26,6 +26,15 @@
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:titleTextColor="@android:color/white">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gastos"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:layout_marginEnd="20dp"
+                />
+
             <Button
                 android:onClick="AbrirCategorias"
                 android:layout_width="wrap_content"

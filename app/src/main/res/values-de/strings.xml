@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DAM-SmartMoney</string>
+    <string name="gastos_fijos">Fixkosten:</string>
+    <string name="total">Gesamt:</string>
+    <string name="ahorros">Ersparnisse:</string>
+    <string name="inversion">Investition:</string>
+    <string name="mes">Monat</string>
+    <string name="add">+Hinzufügen</string>
+    <string name="calcular">Berechnen</string>
+    <string name="money">€€:€€</string>
+    <string name="x">Stornieren</string>
+    <string name="descripcion">Kategorietyp</string>
+    <string name="nombre">Name</string>
+    <string name="money_space">€:</string>
+    <string name="nombre_space">Name:</string>
+    <string name="categoria">Kategorie:</string>
+    <string name="fecha">Datum:</string>
+    <string name="saldo_total">Gesamtsaldo:</string>
+    <string name="categorias">Kategorien</string>
+    <string name="actualizar_ingresos">Einkommen aktualisieren</string>
+    <string name="razon">Grund</string>
+    <string name="monto">Menge:</string>
+    <string name="bienvenidos">Willkommen</string>
+    <string name="gracias_por_descargar">Vielen Dank fürs Herunterladen</string>
+    <string name="billetera">Geldbörse</string>
+    <string name="ingresa_el_dinero_con_el_que_cuentas_en_efectivo_actualmente">Geben Sie den Betrag ein, über den Sie derzeit in bar verfügen</string>
+    <string name="enter_user_name">Geben Sie Ihren Namen ein</string>
+    <string name="btn_add_category">Kategorie + hinzufügen</string>
+    <string name="cantidad">Menge</string>
+    <string name="returnBTN">Zurückkehren</string>
+    <string name="btn_categorias_page">Siehe Kategorien</string>
+    <string name="txtCategoria">Kategorien</string>
+    <string name="txt_planeacion_title">Planung</string>
+</resources>

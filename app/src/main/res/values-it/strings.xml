@@ -11,7 +11,6 @@
     <string name="nombre_space">Nome:</string>
     <string name="categoria">Categoria:</string>
     <string name="fecha">Data:</string>
-    <string name="fecha_space">AAAA/MM/GG</string>
     <string name="gastos_fijos">Spese Fisse:</string>
     <string name="saldo_total">Saldo totale</string>
     <string name="inversion">Investimento:</string>

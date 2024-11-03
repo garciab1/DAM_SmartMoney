@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">DAM-SmartMoney</string>
     <string name="gastos_fijos">Fixed expenses:</string>
-    <string name="total">Total</string>
+    <string name="total">Total:</string>
     <string name="ahorros">Savings</string>
     <string name="inversion">Investment:</string>
     <string name="mes">Month</string>
@@ -13,7 +13,6 @@
     <string name="nombre_space">Name:</string>
     <string name="categoria">Category:</string>
     <string name="fecha">Date:</string>
-    <string name="fecha_space">YYYY/MM/DD</string>
     <string name="saldo_total">Total Balance:</string>
     <string name="categorias">Categories</string>
     <string name="money">$$:$$</string>

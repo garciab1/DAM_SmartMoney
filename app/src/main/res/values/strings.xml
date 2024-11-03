@@ -18,7 +18,7 @@
     <string name="nombre_space">Nombre:</string>
     <string name="categoria">Categoria:</string>
     <string name="fecha">Fecha:</string>
-    <string name="fecha_space">AAAA/MM/DD</string>
+    <string name="fecha_space" translatable="false">DD/MM/YYYY</string>
     <string name="saldo_total">Saldo Total:</string>
     <string name="categorias">Categorias</string>
     <string name="image" translatable="false">Image</string>
@@ -31,11 +31,11 @@
     <string name="ingresa_el_dinero_con_el_que_cuentas_en_efectivo_actualmente">Ingresa el dinero con el que cuentas en efectivo actualmente</string>
     <string name="enter_user_name">Ingrese su nombre</string>
     <string name="btn_add_category">Añadir categoria +</string>
-    <string name="important_expence_date">dd/MM/yyyy</string>
+    <string name="important_expence_date" translatable="false">dd/MM/yyyy</string>
     <string name="cantidad">Cantidad</string>
     <string name="returnBTN">Volver</string>
     <string name="btn_categorias_page">Ver Categorias</string>
     <string name="txtCategoria">Categorias</string>
     <string name="txt_planeacion_title">Planeacion</string>
-    <string name="_0">0</string>
+    <string name="_0" translatable="false">0</string>
 </resources>
