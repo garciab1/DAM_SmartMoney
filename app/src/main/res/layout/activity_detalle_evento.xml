@@ -40,14 +40,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingBottom="8dp"
-        android:text="Fecha: "
+        android:text="@string/fecha2"
         android:textSize="18sp" />
 
     <TextView
         android:id="@+id/eventoTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Evento: "
+        android:text="@string/evento"
         android:textSize="18sp" />
 
 </LinearLayout>

@@ -51,4 +51,7 @@
     <string name="total_sobrante">Total sobrante:</string>
     <string name="dinero_inicial">Dinero Inicial:</string>
     <string name="categor_a">Categoría:</string>
+    <string name="ingrese_la_cantidad">Ingrese la cantidad</string>
+    <string name="evento">Evento:</string>
+    <string name="fecha2">Fecha:</string>
 </resources>
