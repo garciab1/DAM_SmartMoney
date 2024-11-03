@@ -19,29 +19,30 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
+            android:background="#4CAF50"
             android:elevation="4dp"
             android:gravity="end"
-            app:title="Pagina principal"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:title="SMART-MONEY"
             app:titleTextColor="@android:color/white">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="end"
                 android:layout_marginStart="50dp"
-                android:orientation="horizontal">
+                android:gravity="end"
+                android:orientation="horizontal"
+                android:paddingLeft="30dp">
 
                 <Button
                     android:id="@+id/btn_categoria"
-                    android:onClick="ShowCategoryCreate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/btn_add_category"
                     android:backgroundTint="@color/white"
-                    android:textColor="@color/black"
-                    android:textAlignment="center" />
+                    android:onClick="ShowCategoryCreate"
+                    android:text="@string/btn_add_category"
+                    android:textAlignment="center"
+                    android:textColor="@color/black" />
             </LinearLayout>
 
         </androidx.appcompat.widget.Toolbar>
@@ -95,11 +96,13 @@
 
             <Button
                 android:id="@+id/button"
-                android:onClick="show_important_expences"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#4CAF50"
+                android:onClick="show_important_expences"
                 android:text="@string/add_symbol"
                 android:textAlignment="center" />
+
         </LinearLayout>
 
         <CalendarView

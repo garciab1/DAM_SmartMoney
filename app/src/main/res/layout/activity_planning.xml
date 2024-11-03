@@ -21,7 +21,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
+            android:background="#4CAF50"
             android:elevation="4dp"
             android:gravity="end"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
@@ -32,8 +32,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/txt_planeacion_title"
                 android:textColor="@color/white"
-                android:textSize="24sp"
-                />
+                android:textSize="24sp" />
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -101,7 +100,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="Planning"
+                    android:text="@string/planning"
                     android:textSize="23sp"
                     android:textStyle="bold" />
 
@@ -115,21 +114,21 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Dinero total"
+                    android:text="@string/dinero_inicial"
                     android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/txt_planning_dinero_total"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="30dp"
                     android:autofillHints="0"
-                    android:hint="@string/_0"
-                    android:textIsSelectable="false"
                     android:enabled="false"
+                    android:hint="@string/_0"
+                    android:inputType="number"
                     android:textAlignment="textStart"
                     android:textColor="@color/color_one"
+                    android:textIsSelectable="false"
                     android:textSize="18sp"
-                    android:inputType="number"
                     android:textStyle="bold" />
 
                 <!-- Gastos fijos -->
@@ -142,54 +141,54 @@
                 <EditText
                     android:id="@+id/txt_planning_gastos_fijos"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="30dp"
                     android:hint="@string/_0"
+                    android:inputType="number"
                     android:textAlignment="textStart"
                     android:textColor="@color/color_one"
-                    android:textSize="18sp"
-                    android:inputType="number"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <!-- Ahorros -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ahorros"
+                    android:text="@string/ahorros2"
                     android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/txt_planning_ahorros"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="30dp"
                     android:hint="@string/_0"
+                    android:inputType="number"
                     android:textAlignment="textStart"
                     android:textColor="@color/color_one"
-                    android:textSize="18sp"
-                    android:inputType="number"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <!-- Inversion -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Inversion"
+                    android:text="@string/inversi_n"
                     android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/txt_planning_inversion"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="30dp"
                     android:hint="@string/_0"
+                    android:inputType="number"
                     android:textAlignment="textStart"
                     android:textColor="@color/color_one"
-                    android:textSize="18sp"
-                    android:inputType="number"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Total sobrante"/>
+                    android:text="@string/total_sobrante"/>
 
                 <EditText
                     android:id="@+id/TotalSobrante"
@@ -209,6 +208,7 @@
             android:onClick="CalcularGastos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#4CAF50"
             android:layout_marginTop="16dp"
             android:text="@string/calcular" />
     </LinearLayout>

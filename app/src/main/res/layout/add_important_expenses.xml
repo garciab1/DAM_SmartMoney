@@ -12,7 +12,7 @@
 
         <TextView
             android:id="@+id/textView24"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="30dp"
             android:layout_weight="1"
             android:text="@string/nombre_space"
@@ -21,7 +21,7 @@
 
         <EditText
             android:id="@+id/txt_nombre_important_expence"
-            android:layout_width="300dp"
+            android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_weight="1"
             android:ems="10"
@@ -37,20 +37,20 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="30dp"
             android:layout_weight="1"
-            android:text="@string/cantidad"
+            android:text="@string/cantidad2"
             android:textAlignment="textEnd"
             android:textSize="20sp" />
 
         <EditText
             android:id="@+id/txt_cantidad_important_expence"
-            android:layout_width="300dp"
+            android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="@string/nombre"
+            android:hint="Ingrese la cantidad"
             android:inputType="numberDecimal"
             tools:ignore="Autofill" />
 
@@ -63,24 +63,24 @@
 
         <TextView
             android:id="@+id/textView30"
-            android:layout_width="0dp"
-            android:layout_height="30dp"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
             android:layout_weight="1"
             android:text="@string/fecha"
             android:textAlignment="textEnd"
-            android:textSize="20sp"
-            />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/textView_fecha"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:text="@string/important_expence_date"
-            android:padding="8dp"
-            android:textSize="20sp"
-            android:gravity="center"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
             android:clickable="true"
-            android:focusable="true"/>
+            android:focusable="true"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="@string/important_expence_date"
+            android:textSize="20sp"
+            tools:ignore="TouchTargetSizeCheck" />
     </LinearLayout>
 
     <LinearLayout

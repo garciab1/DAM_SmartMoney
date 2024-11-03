@@ -50,7 +50,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="@string/money"
-            android:inputType="text" />
+            android:inputType="number" />
     </LinearLayout>
 
     <LinearLayout
@@ -59,24 +59,23 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="50dp"
             android:layout_height="30dp"
             android:layout_weight="1"
             android:text="@string/fecha"
             android:textAlignment="textEnd"
-            android:textSize="20sp"
-            />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/fecha_expence"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:text="@string/important_expence_date"
-            android:padding="8dp"
-            android:textSize="20sp"
-            android:gravity="center"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
             android:clickable="true"
-            android:focusable="true"/>
+            android:focusable="true"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="@string/important_expence_date"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -88,14 +87,14 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_weight="1"
-            android:text="Categoria"
+            android:text="@string/categor_a"
             android:textAlignment="textEnd"
             android:textSize="20sp" />
 
         <Spinner
             android:id="@+id/spinner_categoria"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
             android:layout_weight="1" />
     </LinearLayout>
 
@@ -105,20 +104,22 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btn_ok_expence"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="#1A611B"
-            android:text="@string/ok" />
-
-        <Button
             android:id="@+id/btn_cancel_expence"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="@color/design_default_color_error"
-            android:text="@string/x" />
+            android:text="@string/x"
+            android:textColor="@color/color_white" />
+
+        <Button
+            android:id="@+id/btn_ok_expence"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:backgroundTint="#1A611B"
+            android:text="@string/ok"
+            android:textColor="@color/white" />
     </LinearLayout>
 
 </LinearLayout>

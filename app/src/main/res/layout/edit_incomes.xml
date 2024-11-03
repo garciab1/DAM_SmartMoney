@@ -80,20 +80,20 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button50"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="#1A611B"
-            android:text="@string/ok" />
-
-        <Button
             android:id="@+id/button51"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="@color/design_default_color_error"
             android:text="@string/x" />
+
+        <Button
+            android:id="@+id/button50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#1A611B"
+            android:text="@string/ok" />
     </LinearLayout>
 
 </LinearLayout>

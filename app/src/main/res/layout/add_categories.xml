@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center_horizontal"
     android:background="#0000BCD4"
-    android:padding="10dp"
-    android:orientation="vertical">
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="10dp">
 
     <EditText
         android:id="@+id/txt_categoria_nombre"
@@ -28,7 +28,8 @@
         android:id="@+id/btn_add_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Añadir imagen" />
+        android:backgroundTint="#4CAF50"
+        android:text="@string/a_adir_imagen" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,8 +41,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:backgroundTint="@color/design_default_color_error"
-            android:text="@string/x" />
+            android:backgroundTint="#840A0A"
+            android:text="@string/x"
+            android:textColor="@color/color_white" />
 
         <Button
             android:id="@+id/btn_aceptar"
@@ -49,6 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="#1A611B"
-            android:text="@string/ok" />
+            android:text="@string/ok"
+            android:textColor="@color/color_white" />
     </LinearLayout>
 </LinearLayout>
