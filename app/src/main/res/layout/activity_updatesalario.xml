@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".VerCategorias">
+    tools:context=".updatesalario">
 
     <!-- Toolbar -->
     <com.google.android.material.appbar.AppBarLayout
@@ -26,7 +26,6 @@
             app:titleTextColor="@android:color/white">
 
             <ImageButton
-                android:id="@+id/BtnVolver"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#4CAF50"
@@ -37,7 +36,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/categorias"
+                android:text="@string/actualizar_salario"
                 android:textColor="@color/black"
                 android:textSize="24sp" />
         </androidx.appcompat.widget.Toolbar>
@@ -47,14 +46,62 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/appBarLayout"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_marginTop="0dp">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="0dp" />
+            android:layout_marginTop="0dp"
+            android:padding="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_salario_actual"
+                android:textSize="24sp"/>
+
+            <EditText
+                android:id="@+id/txt_actualizar_salario_ver"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:enabled="false"
+                android:text="@string/_0"
+                android:textSize="24sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="@string/txtsalario"
+                android:textSize="24sp"/>
+
+            <EditText
+                android:id="@+id/txt_actualizar_salario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:enabled="true"
+                android:text="@string/_0"
+                android:textSize="24sp"/>
+        </LinearLayout>
+
+        <Button
+            android:onClick="ActualizarElSalario"
+            android:layout_gravity="center"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_update"/>
     </LinearLayout>
+
+
+
 </RelativeLayout>

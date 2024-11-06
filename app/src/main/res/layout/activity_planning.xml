@@ -33,6 +33,16 @@
                 android:text="@string/txt_planeacion_title"
                 android:textColor="@color/white"
                 android:textSize="24sp" />
+
+            <Button
+                android:onClick="PantallaUpdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                android:text="Actualizar salario"/>
+
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -96,20 +106,6 @@
                 android:orientation="vertical"
                 android:padding="8dp">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:text="@string/planning"
-                    android:textSize="23sp"
-                    android:textStyle="bold" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="@color/color_two" />
-
                 <!-- Ejemplo de texto dinámico -->
                 <TextView
                     android:layout_width="wrap_content"
@@ -120,7 +116,7 @@
                 <EditText
                     android:id="@+id/txt_planning_dinero_total"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:autofillHints="0"
                     android:enabled="false"
                     android:hint="@string/_0"
@@ -141,7 +137,7 @@
                 <EditText
                     android:id="@+id/txt_planning_gastos_fijos"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:hint="@string/_0"
                     android:inputType="number"
                     android:textAlignment="textStart"
@@ -159,7 +155,7 @@
                 <EditText
                     android:id="@+id/txt_planning_ahorros"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:hint="@string/_0"
                     android:inputType="number"
                     android:textAlignment="textStart"
@@ -177,7 +173,7 @@
                 <EditText
                     android:id="@+id/txt_planning_inversion"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:hint="@string/_0"
                     android:inputType="number"
                     android:textAlignment="textStart"
@@ -193,7 +189,7 @@
                 <EditText
                     android:id="@+id/TotalSobrante"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:text="@string/_0"
                     android:enabled="false"
                     android:textAlignment="textStart"

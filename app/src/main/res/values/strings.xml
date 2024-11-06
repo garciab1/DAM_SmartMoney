@@ -54,4 +54,10 @@
     <string name="ingrese_la_cantidad">Ingrese la cantidad</string>
     <string name="evento">Evento:</string>
     <string name="fecha2">Fecha:</string>
+    <string name="acerca_de_nosotros">Acerca de nosotros</string>
+    <string name="actualizar_salario">Actualizar salario</string>
+    <string name="txtsalario">Salario:</string>
+    <string name="btn_update">Actualizar</string>
+    <string name="txt_salario_actual">Salario actual</string>
+    <string name="txt_eliminar_gasto">Eliminar gasto</string>
 </resources>

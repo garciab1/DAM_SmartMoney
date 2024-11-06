@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 import sv.edu.catolica.dam_smartmoney.Classes.Categoria;
+import sv.edu.catolica.dam_smartmoney.Classes.Gasto;
 
 public class DatabaseHelper {
     private final Context context;
@@ -318,4 +319,73 @@ public class DatabaseHelper {
         cursor.close();
         return gastoDetalles.toString();
     }
+
+    public boolean UpdateSalario(Double salarioNuevo){
+        Database database = new Database(context);
+        SQLiteDatabase db = database.getReadableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("dinero", salarioNuevo);
+
+        int rowsUpdated = db.update("Usuarios", values, null, null); // Sin condición para actualizar todos
+        db.close();
+
+        return rowsUpdated > 0;
+    }
+
+    public boolean eliminarGasto(int id) {
+        Database database = new Database(context);
+        SQLiteDatabase db = database.getWritableDatabase();
+
+        int rowsDeleted = db.delete("Gasto", "id = ?", new String[]{String.valueOf(id)});
+        db.close();
+        return rowsDeleted > 0;
+    }
+
+    public List<Gasto> obtenerGastos() {
+        Database database = new Database(context);
+        SQLiteDatabase db = database.getReadableDatabase();
+
+        List<Gasto> listaGastos = new ArrayList<>();
+        // Define the query to get all columns from the Gasto table
+        String query = "SELECT id, nombre_gasto, fecha_gasto, categoria_gasto, pago_gasto FROM Gasto";
+        Cursor cursor = db.rawQuery(query, null);
+
+        // Loop through each row in the result and create a Gasto object for each
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(cursor.getColumnIndexOrThrow("id"));
+                String nombreGasto = cursor.getString(cursor.getColumnIndexOrThrow("nombre_gasto"));
+                double cantidad = getCantidadFromPago(cursor.getInt(cursor.getColumnIndexOrThrow("pago_gasto"))); // retrieve from Pagos table
+                int fechaGasto = cursor.getInt(cursor.getColumnIndexOrThrow("fecha_gasto"));
+                int categoriaGasto = cursor.getInt(cursor.getColumnIndexOrThrow("categoria_gasto"));
+                int pagoGasto = cursor.getInt(cursor.getColumnIndexOrThrow("pago_gasto"));
+
+                // Create a Gasto object and add it to the list
+                Gasto gasto = new Gasto(id, nombreGasto, cantidad, fechaGasto, categoriaGasto, pagoGasto);
+                listaGastos.add(gasto);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return listaGastos;
+    }
+
+    // Helper method to get the "cantidad" from Pagos based on pago_gasto ID
+    private double getCantidadFromPago(int pagoGastoId) {
+        Database database = new Database(context);
+        SQLiteDatabase db = database.getReadableDatabase();
+        double cantidad = 0;
+        Cursor cursor = db.rawQuery("SELECT cantidad FROM Pagos WHERE id = ?", new String[]{String.valueOf(pagoGastoId)});
+
+        if (cursor.moveToFirst()) {
+            cantidad = cursor.getDouble(cursor.getColumnIndexOrThrow("cantidad"));
+        }
+
+        cursor.close();
+        return cantidad;
+    }
+
 }

@@ -51,6 +51,9 @@ public class Planning extends AppCompatActivity {
                     return true;
                 case "Profile":
                     return true;
+                case "About":
+                    startActivity(new Intent(this, about.class));
+                    return true;
             }
             return false;
         });
@@ -79,9 +82,9 @@ public class Planning extends AppCompatActivity {
         double total = db.getsaldototal();
 
         // Obtener los valores de porcentaje ingresados en cada campo
-        int gastoFijoPercent = Integer.parseInt(txtGastoFijo.getText().toString());
-        int ahorroPercent = Integer.parseInt(txtAhorro.getText().toString());
-        int inversionPercent = Integer.parseInt(txtInversion.getText().toString());
+        int gastoFijoPercent = txtGastoFijo.getText().toString().isEmpty() ? 0 : Integer.parseInt(txtGastoFijo.getText().toString());
+        int ahorroPercent = txtAhorro.getText().toString().isEmpty() ? 0 : Integer.parseInt(txtAhorro.getText().toString());
+        int inversionPercent = txtInversion.getText().toString().isEmpty() ? 0 : Integer.parseInt(txtInversion.getText().toString());
 
         // Calcular el valor real de cada categoría
         double gastoFijo = total * gastoFijoPercent / 100;
@@ -117,5 +120,10 @@ public class Planning extends AppCompatActivity {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
         listaPlanning.setAdapter(adapter);
+    }
+
+    public void PantallaUpdate(View view) {
+        Intent intent = new Intent(Planning.this, updatesalario.class);
+        startActivity(intent);
     }
 }

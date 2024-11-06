@@ -70,6 +70,9 @@ public class Expenses extends AppCompatActivity {
                 case "Profile":
                     startActivity(new Intent(this, Planning.class));
                     return true;
+                case "About":
+                    startActivity(new Intent(this, about.class));
+                    return true;
             }
             return false;
         });
@@ -258,5 +261,10 @@ public class Expenses extends AppCompatActivity {
     private int getColorForCategory(String categoryName) {
         int index = Math.abs(categoryName.hashCode()) % colors.length;
         return getResources().getColor(colors[index]);
+    }
+
+    public void VistaEliminar(View view) {
+        Intent intent = new Intent(Expenses.this, eliminargasto.class);
+        startActivity(intent);
     }
 }

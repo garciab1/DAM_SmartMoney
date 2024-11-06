@@ -17,6 +17,15 @@
         android:theme="@style/Theme.DAMSmartMoney"
         tools:targetApi="31">
         <activity
+            android:name=".eliminargasto"
+            android:exported="false" />
+        <activity
+            android:name=".updatesalario"
+            android:exported="false" />
+        <activity
+            android:name=".about"
+            android:exported="false" />
+        <activity
             android:name=".activity_detalle_evento"
             android:exported="false" />
         <activity
@@ -27,8 +36,8 @@
             android:exported="false" />
         <activity
             android:name=".Planning"
-            android:windowSoftInputMode="adjustPan|stateVisible"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan|stateVisible" />
         <activity
             android:name=".Expenses"
             android:exported="false" />

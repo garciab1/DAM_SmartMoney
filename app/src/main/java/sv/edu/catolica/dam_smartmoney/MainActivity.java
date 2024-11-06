@@ -106,6 +106,9 @@ public class MainActivity extends AppCompatActivity {
                 case "Profile":
                     startActivity(new Intent(this, Planning.class));
                     return true;
+                case "About":
+                    startActivity(new Intent(this, about.class));
+                    return true;
             }
             return false;
         });

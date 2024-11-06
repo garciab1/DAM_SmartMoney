@@ -1,0 +1,31 @@
+<!-- res/layout/item_gasto.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/nombre_gasto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Nombre del gasto"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/cantidad_gasto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cantidad"
+        android:textSize="16sp" />
+
+    <ImageButton
+        android:id="@+id/btn_eliminar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/ic_delete"
+        android:tint="#FF0000"
+        android:contentDescription="Eliminar"
+        android:background="?android:attr/selectableItemBackground" />
+</LinearLayout>
