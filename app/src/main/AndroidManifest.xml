@@ -19,31 +19,40 @@
         android:screenOrientation="portrait">
         <activity
             android:name=".eliminargasto"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".updatesalario"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".about"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".activity_detalle_evento"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".VerCategorias"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".welcome"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".Planning"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateVisible" />
         <activity
             android:name=".Expenses"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".Intro"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -53,6 +62,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
     </application>
 

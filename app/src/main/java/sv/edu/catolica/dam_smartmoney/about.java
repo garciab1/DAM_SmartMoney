@@ -49,9 +49,6 @@ public class about extends AppCompatActivity {
                 finish();
                 return true;
             } else if (itemId == R.id.navigation_about) {
-                intent = new Intent(this, about.class);
-                startActivity(intent);
-                finish();
                 return true;
             }
 

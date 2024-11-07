@@ -75,9 +75,6 @@ public class Expenses extends AppCompatActivity {
                 finish();
                 return true;
             } else if (itemId == R.id.navigation_search) {
-                intent = new Intent(this, Expenses.class);
-                startActivity(intent);
-                finish();
                 return true;
             } else if (itemId == R.id.navigation_profile) {
                 intent = new Intent(this, Planning.class);

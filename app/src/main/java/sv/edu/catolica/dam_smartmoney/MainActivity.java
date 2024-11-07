@@ -104,9 +104,6 @@ public class MainActivity extends AppCompatActivity {
             int itemId = item.getItemId();
 
             if (itemId == R.id.navigation_home) {
-                intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
-                finish();
                 return true;
             } else if (itemId == R.id.navigation_search) {
                 intent = new Intent(this, Expenses.class);

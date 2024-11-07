@@ -57,9 +57,6 @@ public class Planning extends AppCompatActivity {
                 finish();
                 return true;
             } else if (itemId == R.id.navigation_profile) {
-                intent = new Intent(this, Planning.class);
-                startActivity(intent);
-                finish();
                 return true;
             } else if (itemId == R.id.navigation_about) {
                 intent = new Intent(this, about.class);
