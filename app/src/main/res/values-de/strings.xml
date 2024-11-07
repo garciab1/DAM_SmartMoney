@@ -53,4 +53,6 @@
     <string name="txt_salario_actual">Aktuelles Gehalt</string>
     <string name="txt_eliminar_gasto">Ausgabe löschen</string>
     <string name="btn_manejar_gastos">Ausgaben verwalten</string>
+    <string name="dinero_inicial">Startgeld</string>
+    <string name="actualizar_salario2">Gehalt aktualisieren</string>
 </resources>

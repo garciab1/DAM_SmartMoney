@@ -41,7 +41,7 @@
                 android:layout_gravity="end"
                 android:backgroundTint="@color/white"
                 android:textColor="@color/black"
-                android:text="Actualizar salario"/>
+                android:text="@string/actualizar_salario2"/>
 
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>

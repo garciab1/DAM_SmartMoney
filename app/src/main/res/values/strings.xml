@@ -61,4 +61,5 @@
     <string name="txt_salario_actual">Salario actual</string>
     <string name="txt_eliminar_gasto">Eliminar gasto</string>
     <string name="btn_manejar_gastos">Manejar gastos</string>
+    <string name="actualizar_salario2">Actualizar salario</string>
 </resources>

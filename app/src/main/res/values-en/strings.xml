@@ -8,6 +8,7 @@
     <string name="mes">Month</string>
     <string name="add">+Add</string>
     <string name="calcular">Calculate</string>
+    <string name="x">Cancel</string>
     <string name="descripcion">Category type</string>
     <string name="nombre">Name</string>
     <string name="nombre_space">Name:</string>
@@ -53,4 +54,5 @@
     <string name="txt_salario_actual">Actual salary</string>
     <string name="txt_eliminar_gasto">Delete expense</string>
     <string name="btn_manejar_gastos">Managing expenses</string>
+    <string name="actualizar_salario2">Update salary</string>
 </resources>
