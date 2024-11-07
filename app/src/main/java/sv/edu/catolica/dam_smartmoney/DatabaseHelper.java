@@ -273,13 +273,15 @@ public class DatabaseHelper {
         SQLiteDatabase db = database.getReadableDatabase();
 
         List<String> datos = new ArrayList<>();
-        Cursor cursor = db.rawQuery("SELECT Gasto.nombre_gasto, Categoria.categoria_nombre FROM Gasto " +
-                "JOIN Categoria ON Categoria.id = Gasto.categoria_gasto", null);
+        Cursor cursor = db.rawQuery("SELECT Gasto.nombre_gasto, Fechas.fecha, Categoria.categoria_nombre FROM Gasto " +
+                "JOIN Categoria ON Categoria.id = Gasto.categoria_gasto " +
+                "JOIN Fechas ON Fechas.id = Gasto.fecha_gasto", null);
 
         while (cursor.moveToNext()){
             String Gasto = cursor.getString(0);
-            String Categoria = cursor.getString(1);
-            datos.add("Gasto:" + Gasto + "," + "Categoria: " + Categoria);
+            String Fecha = cursor.getString(1);
+            String Categoria = cursor.getString(2);
+            datos.add("Gasto: " + Gasto + "\n" + "Fecha: " + Fecha + "\n" + "Categoria: " + Categoria);
         }
 
         return datos;
