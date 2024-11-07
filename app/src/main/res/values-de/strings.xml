@@ -34,6 +34,9 @@
     <string name="txt_planeacion_title">Planung</string>
     <string name="cantidad2">Menge:</string>
     <string name="agregar_gasto">Kosten hinzufügen</string>
+    <string name="planeacion">Planung</string>
+    <string name="acerca">Über uns</string>
+    <string name="inicio">Startseite</string>
     <string name="gastos">Rechnungen</string>
     <string name="a_o">Jahr</string>
     <string name="categoria3">Kategorie</string>

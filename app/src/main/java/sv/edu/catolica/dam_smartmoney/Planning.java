@@ -41,24 +41,35 @@ public class Planning extends AppCompatActivity {
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
+        bottomNavigationView.setSelectedItemId(R.id.navigation_profile);
         bottomNavigationView.setOnItemSelectedListener(item -> {
-            switch (Objects.requireNonNull(item.getTitle()).toString()) {
-                case "Home":
-                    startActivity(new Intent(this, MainActivity.class));
-                    return true;
-                case "Search":
-                    startActivity(new Intent(this, Expenses.class));
-                    return true;
-                case "Profile":
-                    return true;
-                case "About":
-                    startActivity(new Intent(this, about.class));
-                    return true;
+            Intent intent;
+            int itemId = item.getItemId();
+
+            if (itemId == R.id.navigation_home) {
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                finish();
+                return true;
+            } else if (itemId == R.id.navigation_search) {
+                intent = new Intent(this, Expenses.class);
+                startActivity(intent);
+                finish();
+                return true;
+            } else if (itemId == R.id.navigation_profile) {
+                intent = new Intent(this, Planning.class);
+                startActivity(intent);
+                finish();
+                return true;
+            } else if (itemId == R.id.navigation_about) {
+                intent = new Intent(this, about.class);
+                startActivity(intent);
+                finish();
+                return true;
             }
+
             return false;
         });
-
-        bottomNavigationView.setSelectedItemId(R.id.navigation_profile);
 
         txtTotal = findViewById(R.id.txt_planning_dinero_total);
         txtGastoFijo = findViewById(R.id.txt_planning_gastos_fijos);

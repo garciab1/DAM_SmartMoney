@@ -60,28 +60,40 @@ public class Expenses extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         Lista = findViewById(R.id.ListaExpences);
 
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.navigation_search);
+
         bottomNavigationView.setOnItemSelectedListener(item -> {
-            switch (Objects.requireNonNull(item.getTitle()).toString()) {
-                case "Home":
-                    startActivity(new Intent(this, MainActivity.class));
-                    return true;
-                case "Search":
-                    return true;
-                case "Profile":
-                    startActivity(new Intent(this, Planning.class));
-                    return true;
-                case "About":
-                    startActivity(new Intent(this, about.class));
-                    return true;
+            Intent intent;
+            int itemId = item.getItemId();
+
+            if (itemId == R.id.navigation_home) {
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                finish();
+                return true;
+            } else if (itemId == R.id.navigation_search) {
+                intent = new Intent(this, Expenses.class);
+                startActivity(intent);
+                finish();
+                return true;
+            } else if (itemId == R.id.navigation_profile) {
+                intent = new Intent(this, Planning.class);
+                startActivity(intent);
+                finish();
+                return true;
+            } else if (itemId == R.id.navigation_about) {
+                intent = new Intent(this, about.class);
+                startActivity(intent);
+                finish();
+                return true;
             }
+
             return false;
         });
 
-        bottomNavigationView.setSelectedItemId(R.id.navigation_search);
         verDatos();
         CargarLista();
     }

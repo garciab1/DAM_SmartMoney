@@ -40,7 +40,6 @@
     <string name="_0" translatable="false">0</string>
     <string name="cantidad2">Cantidad:</string>
     <string name="agregar_gasto">Agregar gasto</string>
-    <string name="gastos">Gastos</string>
     <string name="a_o">Año</string>
     <string name="categoria3">Categoria</string>
     <string name="a_adir_imagen">Añadir imagen</string>
@@ -62,4 +61,8 @@
     <string name="txt_eliminar_gasto">Eliminar gasto</string>
     <string name="btn_manejar_gastos">Manejar gastos</string>
     <string name="actualizar_salario2">Actualizar salario</string>
+    <string name="inicio">Inicio</string>
+    <string name="gastos">Gastos</string>
+    <string name="planeacion">Planeacion</string>
+    <string name="acerca">Sobre nosotros</string>
 </resources>

@@ -98,24 +98,36 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        bottomNavigationView.setSelectedItemId(R.id.navigation_home);
         bottomNavigationView.setOnItemSelectedListener(item -> {
-            switch (Objects.requireNonNull(item.getTitle()).toString()) {
-                case "Home":
-                    return true;
-                case "Search":
-                    startActivity(new Intent(this, Expenses.class));
-                    return true;
-                case "Profile":
-                    startActivity(new Intent(this, Planning.class));
-                    return true;
-                case "About":
-                    startActivity(new Intent(this, about.class));
-                    return true;
+            Intent intent;
+            int itemId = item.getItemId();
+
+            if (itemId == R.id.navigation_home) {
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                finish();
+                return true;
+            } else if (itemId == R.id.navigation_search) {
+                intent = new Intent(this, Expenses.class);
+                startActivity(intent);
+                finish();
+                return true;
+            } else if (itemId == R.id.navigation_profile) {
+                intent = new Intent(this, Planning.class);
+                startActivity(intent);
+                finish();
+                return true;
+            } else if (itemId == R.id.navigation_about) {
+                intent = new Intent(this, about.class);
+                startActivity(intent);
+                finish();
+                return true;
             }
+
             return false;
         });
 
-        bottomNavigationView.setSelectedItemId(R.id.navigation_home);
 
         saldo_total = findViewById(R.id.textView16);
         get_money();
