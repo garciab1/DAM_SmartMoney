@@ -43,6 +43,7 @@ public class updatesalario extends AppCompatActivity {
     public void VolverExpenses(View view) {
         Intent intent = new Intent(updatesalario.this, Planning.class);
         startActivity(intent);
+        finish();
     }
 
     public void ActualizarElSalario(View view) {

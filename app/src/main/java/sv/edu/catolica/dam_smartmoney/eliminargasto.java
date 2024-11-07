@@ -66,5 +66,6 @@ public class eliminargasto extends AppCompatActivity {
     public void VolverExpenses(View view) {
         Intent intent = new Intent(eliminargasto.this, Expenses.class);
         startActivity(intent);
+        finish();
     }
 }

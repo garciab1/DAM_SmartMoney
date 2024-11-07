@@ -39,5 +39,6 @@ public class activity_detalle_evento extends AppCompatActivity {
     public void VolverMain(View view) {
         Intent intent = new Intent(activity_detalle_evento.this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 }

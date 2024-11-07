@@ -38,6 +38,7 @@ public class VerCategorias extends AppCompatActivity {
     public void VolverExpenses(View view) {
         Intent intent = new Intent(VerCategorias.this, Expenses.class);
         startActivity(intent);
+        finish();
     }
 
     private void CargarCategorias(){
