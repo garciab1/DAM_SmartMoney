@@ -3,10 +3,13 @@ package sv.edu.catolica.dam_smartmoney;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -40,7 +43,22 @@ public class eliminargasto extends AppCompatActivity {
         // Obtener lista de gastos desde la base de datos
         DatabaseHelper db = new DatabaseHelper(eliminargasto.this);
         listaGastos = db.obtenerGastos();
-        adapter = new GastoAdapter(this, listaGastos, dbHelper);
+        adapter = new GastoAdapter(this, listaGastos, dbHelper){
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                // Obtiene la vista del elemento de la lista
+                View view = super.getView(position, convertView, parent);
+
+                // Cambia el color del texto
+                TextView textView = (TextView) view.findViewById(R.id.nombre_gasto);
+                textView.setTextColor(ContextCompat.getColor(getContext(), R.color.textcolor));
+
+                TextView textView2 = (TextView) view.findViewById(R.id.cantidad_gasto);
+                textView2.setTextColor(ContextCompat.getColor(getContext(), R.color.textcolor));
+
+                return view;
+            }
+        };
         listView.setAdapter(adapter);
 
     }

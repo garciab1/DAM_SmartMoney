@@ -95,6 +95,8 @@
         </LinearLayout>
 
         <Button
+            android:backgroundTint="#4CAF50"
+            android:textColor="@color/white"
             android:onClick="ActualizarElSalario"
             android:layout_gravity="center"
             android:layout_width="300dp"

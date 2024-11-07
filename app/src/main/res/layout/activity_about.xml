@@ -50,8 +50,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="120dp"
-                    android:layout_height="200dp"
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
                     android:layout_margin="20dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/esme" />
@@ -65,7 +65,7 @@
                     android:paddingTop="8dp"
                     android:text="Esmeralda Noemi Garcia Borja"
                     android:textAlignment="center"
-                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textColor="@color/textcolor"
                     android:textSize="20sp" />
             </LinearLayout>
 
@@ -75,8 +75,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="120dp"
-                    android:layout_height="200dp"
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
                     android:layout_margin="20dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/fer" />
@@ -89,7 +89,7 @@
                     android:paddingTop="8dp"
                     android:text="Fernando Ulises Gómez Herrera"
                     android:textAlignment="center"
-                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textColor="@color/textcolor"
                     android:textSize="20sp" />
             </LinearLayout>
 
@@ -99,8 +99,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="120dp"
-                    android:layout_height="200dp"
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
                     android:layout_margin="20dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/frank" />
@@ -113,7 +113,7 @@
                     android:paddingTop="8dp"
                     android:text="Jorge Francisco Cisneros Zometa"
                     android:textAlignment="center"
-                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textColor="@color/textcolor"
                     android:textSize="20sp" />
             </LinearLayout>
         </LinearLayout>

@@ -7,6 +7,7 @@ import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -17,8 +18,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -86,7 +90,20 @@ public class Expenses extends AppCompatActivity {
         DatabaseHelper db = new DatabaseHelper(Expenses.this);
         List<String> ListaExpenses = db.getCategoriaExpences();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, ListaExpenses);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, ListaExpenses){
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                // Obtiene la vista del elemento de la lista
+                View view = super.getView(position, convertView, parent);
+
+                // Cambia el color del texto
+                TextView textView = (TextView) view.findViewById(android.R.id.text1);
+                textView.setTextColor(getResources().getColor(R.color.textcolor)); // Usa el color adaptativo
+
+                return view;
+            }
+        };
+
         Lista.setAdapter(adapter);
     }
 
@@ -96,9 +113,9 @@ public class Expenses extends AppCompatActivity {
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         dialogBuilder.setView(vista);
-
         AlertDialog dialog = dialogBuilder.create();
         dialog.show();
+
         Button btnCancelar = vista.findViewById(R.id.btn_cancel_expence);
         Button btnCrearExpence = vista.findViewById(R.id.btn_ok_expence);
         TextView fecha_expence = vista.findViewById(R.id.fecha_expence);

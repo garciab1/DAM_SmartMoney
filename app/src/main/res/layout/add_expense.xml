@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:orientation="vertical">
 
     <LinearLayout
@@ -15,6 +16,7 @@
             android:layout_height="30dp"
             android:layout_weight="1"
             android:text="@string/nombre_space"
+            android:textColor="@color/textcolor"
             android:textAlignment="textEnd"
             android:textSize="20sp" />
 
@@ -41,6 +43,7 @@
             android:layout_weight="1"
             android:text="@string/cantidad"
             android:textAlignment="textEnd"
+            android:textColor="@color/textcolor"
             android:textSize="20sp" />
 
         <EditText
@@ -64,6 +67,7 @@
             android:layout_weight="1"
             android:text="@string/fecha"
             android:textAlignment="textEnd"
+            android:textColor="@color/textcolor"
             android:textSize="20sp" />
 
         <TextView
@@ -72,6 +76,7 @@
             android:layout_height="50dp"
             android:clickable="true"
             android:focusable="true"
+            android:textColor="@color/textcolor"
             android:gravity="center"
             android:padding="8dp"
             android:text="@string/important_expence_date"
@@ -89,6 +94,7 @@
             android:layout_weight="1"
             android:text="@string/categor_a"
             android:textAlignment="textEnd"
+            android:textColor="@color/textcolor"
             android:textSize="20sp" />
 
         <Spinner
@@ -110,7 +116,7 @@
             android:layout_weight="1"
             android:backgroundTint="@color/design_default_color_error"
             android:text="@string/x"
-            android:textColor="@color/color_white" />
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/btn_ok_expence"

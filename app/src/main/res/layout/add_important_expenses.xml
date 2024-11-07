@@ -15,6 +15,7 @@
             android:layout_width="100dp"
             android:layout_height="30dp"
             android:layout_weight="1"
+            android:textColor="@color/textcolor"
             android:text="@string/nombre_space"
             android:textAlignment="textEnd"
             android:textSize="20sp" />
@@ -40,6 +41,7 @@
             android:layout_width="100dp"
             android:layout_height="30dp"
             android:layout_weight="1"
+            android:textColor="@color/textcolor"
             android:text="@string/cantidad2"
             android:textAlignment="textEnd"
             android:textSize="20sp" />
@@ -66,6 +68,7 @@
             android:layout_width="30dp"
             android:layout_height="50dp"
             android:layout_weight="1"
+            android:textColor="@color/textcolor"
             android:text="@string/fecha"
             android:textAlignment="textEnd"
             android:textSize="20sp" />
@@ -80,6 +83,7 @@
             android:padding="8dp"
             android:text="@string/important_expence_date"
             android:textSize="20sp"
+            android:textColor="@color/textcolor"
             tools:ignore="TouchTargetSizeCheck" />
     </LinearLayout>
 
@@ -94,6 +98,7 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:backgroundTint="@color/design_default_color_error"
+            android:textColor="@color/white"
             android:text="@string/x" />
 
         <Button
@@ -102,6 +107,7 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:backgroundTint="#1A611B"
+            android:textColor="@color/white"
             android:text="@string/ok" />
 
     </LinearLayout>

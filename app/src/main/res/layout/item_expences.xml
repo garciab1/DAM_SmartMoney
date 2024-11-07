@@ -13,6 +13,7 @@
 
     <TextView
         android:id="@+id/nombreTextView"
+        android:textColor="@color/textcolor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nombre de Categoría"

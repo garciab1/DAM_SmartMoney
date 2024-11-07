@@ -25,4 +25,18 @@
     <color name="color6">#FF00F2</color>
     <color name="color7">#FF00B7</color>
     <color name="color8">#FF0059</color>
+
+    <!-- Colores dia noche -->
+    <color name="BackGroundN">#211f26</color>
+    <color name="BackGroundD">#FFFFFF</color>
+
+    <!-- Botones -->
+    <color name="buttonColor">#4CAF50</color>
+    <color name="buttonTextColor">#FFFFFF</color>
+
+    <!-- Texto colores -->
+    <color name="textcolor">#000000</color>
+
+    <!-- Texto colores -->
+    <color name="cardcolor">#E6E6E6</color>
 </resources>

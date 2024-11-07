@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">DAM-SmartMoney</string>
-    <string name="gastos_fijos">Fixkosten:</string>
+    <string name="gastos_fijos">Fixkosten %:</string>
     <string name="total">Gesamt:</string>
     <string name="ahorros">Ersparnisse:</string>
     <string name="inversion">Investition:</string>
@@ -29,7 +29,28 @@
     <string name="btn_add_category">Kategorie + hinzufügen</string>
     <string name="cantidad">Menge</string>
     <string name="returnBTN">Zurückkehren</string>
-    <string name="btn_categorias_page">Siehe Kategorien</string>
+    <string name="btn_categorias_page">Siehe kategorien</string>
     <string name="txtCategoria">Kategorien</string>
     <string name="txt_planeacion_title">Planung</string>
+    <string name="cantidad2">Menge:</string>
+    <string name="agregar_gasto">Kosten hinzufügen</string>
+    <string name="gastos">Rechnungen</string>
+    <string name="a_o">Jahr</string>
+    <string name="categoria3">Kategorie</string>
+    <string name="a_adir_imagen">Bild hinzufügen</string>
+    <string name="dinero_total">Gesamtgeld:</string>
+    <string name="ahorros2">Ersparnis %:</string>
+    <string name="inversi_n">Investition %:</string>
+    <string name="total_sobrante">Restsumme:</string>
+    <string name="categor_a">Kategorie:</string>
+    <string name="ingrese_la_cantidad">Startgeld:</string>
+    <string name="evento">Ereignis:</string>
+    <string name="fecha2">Datum:</string>
+    <string name="acerca_de_nosotros">Über uns</string>
+    <string name="actualizar_salario">Gehalt aktualisieren</string>
+    <string name="txtsalario">Gehalt:</string>
+    <string name="btn_update">Aktualisieren</string>
+    <string name="txt_salario_actual">Aktuelles Gehalt</string>
+    <string name="txt_eliminar_gasto">Ausgabe löschen</string>
+    <string name="btn_manejar_gastos">Ausgaben verwalten</string>
 </resources>

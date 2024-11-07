@@ -16,14 +16,6 @@
         android:hint="@string/nombre"
         android:inputType="text" />
 
-    <EditText
-        android:id="@+id/txt_tipo_gasto"
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:ems="10"
-        android:hint="@string/descripcion"
-        android:inputType="text" />
-
     <Button
         android:id="@+id/btn_add_image"
         android:layout_width="match_parent"

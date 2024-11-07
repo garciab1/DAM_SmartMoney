@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">DAM-SmartMoney</string>
-    <string name="gastos_fijos">Fixed expenses:</string>
+    <string name="gastos_fijos">Fixed expenses %:</string>
     <string name="total">Total:</string>
     <string name="ahorros">Savings</string>
     <string name="inversion">Investment:</string>
@@ -24,4 +24,33 @@
     <string name="gracias_por_descargar">Thanks for downloading</string>
     <string name="billetera">Wallet</string>
     <string name="ingresa_el_dinero_con_el_que_cuentas_en_efectivo_actualmente">Enter the money you currently have in cash</string>
+    <string name="enter_user_name">Enter you name</string>
+    <string name="btn_add_category">Add category +</string>
+    <string name="cantidad">Amount</string>
+    <string name="returnBTN">Return</string>
+    <string name="btn_categorias_page">See categories</string>
+    <string name="txtCategoria">Categories</string>
+    <string name="txt_planeacion_title">Planning</string>
+    <string name="cantidad2">Amount:</string>
+    <string name="agregar_gasto">Add expense</string>
+    <string name="gastos">Expense</string>
+    <string name="a_o">Year</string>
+    <string name="categoria3">Category</string>
+    <string name="a_adir_imagen">Add image</string>
+    <string name="dinero_total">Total money:</string>
+    <string name="ahorros2">Savings %</string>
+    <string name="inversi_n">Investment %:</string>
+    <string name="total_sobrante">Total remaining:</string>
+    <string name="dinero_inicial">Initial money:</string>
+    <string name="categor_a">Category:</string>
+    <string name="ingrese_la_cantidad">Enter the amount</string>
+    <string name="evento">Event:</string>
+    <string name="fecha2">Date:</string>
+    <string name="acerca_de_nosotros">About us</string>
+    <string name="actualizar_salario">Update salary</string>
+    <string name="txtsalario">Salary</string>
+    <string name="btn_update">Update</string>
+    <string name="txt_salario_actual">Actual salary</string>
+    <string name="txt_eliminar_gasto">Delete expense</string>
+    <string name="btn_manejar_gastos">Managing expenses</string>
 </resources>

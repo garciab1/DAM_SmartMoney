@@ -53,33 +53,11 @@
         android:layout_marginTop="0dp"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:text="@string/mes"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:gravity="end"
-                android:text="@string/a_o"
-                android:textSize="20sp" />
-        </LinearLayout>
-
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewGraph"
             android:layout_width="match_parent"
             android:layout_height="200dp"
+            app:cardBackgroundColor="@color/cardcolor"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="20dp"
@@ -95,9 +73,12 @@
                     android:id="@+id/piechart"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp"
+                    app:egValueTextColor="@color/textcolor"
+                    app:egLegendColor="@color/textcolor"
+                    app:egInnerPaddingColor="@color/textcolor"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
                     android:layout_weight="1"
                     android:padding="6dp" />
 
@@ -131,32 +112,27 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/bottom_navigation"
         android:orientation="horizontal"
-        android:gravity="end"
+        android:gravity="center"
         android:layout_marginBottom="0dp">
 
         <Button
             android:onClick="VistaEliminar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Manejar gastos"
+            android:text="@string/btn_manejar_gastos"
             android:backgroundTint="#FF0000"
+            android:textColor="@color/white"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_gravity="start"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="10dp"
-            android:text="@string/agregar_gasto" />
 
         <Button
+            android:backgroundTint="#4CAF50"
+            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:backgroundTint="#4CAF50"
             android:onClick="Crear_Gasto"
-            android:layout_gravity="end"
             android:text="@string/add" />
     </LinearLayout>
 

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CalendarView;
@@ -23,6 +24,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.LayoutInflaterCompat;
 import androidx.core.view.ViewCompat;
@@ -166,18 +168,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 DatabaseHelper db = new DatabaseHelper(MainActivity.this);
                 EditText btncategoria = vista.findViewById(R.id.txt_categoria_nombre);
-                EditText btntipo = vista.findViewById(R.id.txt_tipo_gasto);
 
                 String categoria = btncategoria.getText().toString();
-                String tipo = btntipo.getText().toString();
                 String uri = (selectedImageUri != null) ? selectedImageUri.toString() : null;
 
-                boolean verificacion_crear_cat = db.crear_categorias(categoria, tipo, uri);
+                boolean verificacion_crear_cat = db.crear_categorias(categoria, "NULL", uri);
 
                 if (verificacion_crear_cat){
                     mensajemanager("La creacion de la categoria a sido exitosa");
                     btncategoria.setText("");
-                    btntipo.setText("");
                     selectedImageUri = null;
                 }else{
                     mensajemanager("Ocurrio un error al mostrar la categoria");
@@ -291,7 +290,19 @@ public class MainActivity extends AppCompatActivity {
         List<String> pagosImportantes = db.get_pagos_importantes();
 
         // Crear un ArrayAdapter para mostrar los pagos en la ListView
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, pagosImportantes);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, pagosImportantes){
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                // Obtiene la vista del elemento de la lista
+                View view = super.getView(position, convertView, parent);
+
+                // Cambia el color del texto
+                TextView textView = (TextView) view.findViewById(android.R.id.text1);  // Usar el ID correcto
+                textView.setTextColor(ContextCompat.getColor(getContext(), R.color.textcolor));
+
+                return view;
+            }
+        };
         Lista_pagos.setAdapter(adapter);
     }
 

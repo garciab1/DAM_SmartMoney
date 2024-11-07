@@ -333,13 +333,43 @@ public class DatabaseHelper {
         return rowsUpdated > 0;
     }
 
-    public boolean eliminarGasto(int id) {
+    //Eliminar gasto
+    public boolean eliminarGasto(int gastoId) {
         Database database = new Database(context);
         SQLiteDatabase db = database.getWritableDatabase();
+        boolean success = false;
 
-        int rowsDeleted = db.delete("Gasto", "id = ?", new String[]{String.valueOf(id)});
-        db.close();
-        return rowsDeleted > 0;
+        try{
+            db.beginTransaction();
+            Cursor cursor = db.rawQuery("SELECT pago_gasto, fecha_gasto FROM Gasto WHERE id = ?", new String[]{String.valueOf(gastoId)});
+            if (cursor.moveToFirst()){
+                int pagoId = cursor.getInt(cursor.getColumnIndexOrThrow("pago_gasto"));
+                int fechaId = cursor.getInt(cursor.getColumnIndexOrThrow("fecha_gasto"));
+
+                int rowsDeletedGasto = db.delete("Gasto", "id = ?", new String[]{String.valueOf(gastoId)});
+
+                // Verifico si se elimino correctamente el gasto
+                if (rowsDeletedGasto > 0) {
+                    //Eliminar el pago y la fecha que le habia asociado a ese gasto (la categoria no tengo que eliminarla)
+                    int rowsDeletedPago = db.delete("Pagos", "id = ?", new String[]{String.valueOf(pagoId)});
+                    int rowsDeletedFecha = db.delete("Fechas", "id = ?", new String[]{String.valueOf(fechaId)});
+
+                    success = true; //Si sale bien llega aqui xd
+                }
+            }
+            cursor.close();
+            db.setTransactionSuccessful();
+
+        } catch (Exception e) {
+            Log.i("Error", e.toString());
+        } finally {
+            if (db.inTransaction()) {
+                db.endTransaction(); // Terminar la transacción si está activa
+            }
+            db.close();
+        }
+
+        return success;
     }
 
     public List<Gasto> obtenerGastos() {
