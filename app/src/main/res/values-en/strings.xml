@@ -58,4 +58,6 @@
     <string name="txt_eliminar_gasto">Delete expense</string>
     <string name="btn_manejar_gastos">Managing expenses</string>
     <string name="actualizar_salario2">Update salary</string>
+    <string name="agregas_gasto">+ Add Expense</string>
+    <string name="ingresa_el_de_ahorros2">Savings %:</string>
 </resources>

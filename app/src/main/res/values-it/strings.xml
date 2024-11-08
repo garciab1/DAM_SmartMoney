@@ -42,8 +42,8 @@
     <string name="categoria3">Categorie</string>
     <string name="a_adir_imagen">Aggiungi immagine</string>
     <string name="dinero_total">Soldi totali</string>
-    <string name="ahorros2">Risparmio</string>
-    <string name="inversi_n">Investimento</string>
+    <string name="ahorros2">Risparmio %:</string>
+    <string name="inversi_n">Investimento %:</string>
     <string name="total_sobrante">Totale rimanente</string>
     <string name="categor_a">Categorie</string>
     <string name="ingrese_la_cantidad">Aggiungi quantità</string>
@@ -58,4 +58,6 @@
     <string name="btn_manejar_gastos">Gestione delle spese</string>
     <string name="dinero_inicial">Soldi iniziali</string>
     <string name="actualizar_salario2">Aggiorna lo stipendio</string>
+    <string name="agregas_gasto">+ Aggiungi spesa</string>
+    <string name="ingresa_el_de_ahorros2">Risparmio %:</string>
 </resources>

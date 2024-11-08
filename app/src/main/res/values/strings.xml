@@ -65,7 +65,7 @@
     <string name="gastos">Gastos</string>
     <string name="planeacion">Planeacion</string>
     <string name="acerca">Sobre nosotros</string>
-    <string name="ingresa_el_de_ahorros">Ingresa_el_de_ahorros</string>
+    <string name="ingresa_el_de_ahorros" translatable="false">Ingresa_el_de_ahorros</string>
     <string name="agregas_gasto">+ Agregas Gasto</string>
     <string name="ingresa_el_de_ahorros2">Ingresa el % de ahorros:</string>
 </resources>
