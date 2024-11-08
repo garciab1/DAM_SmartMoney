@@ -51,12 +51,11 @@
     <string name="evento">Event:</string>
     <string name="fecha2">Date:</string>
     <string name="acerca_de_nosotros">About us</string>
-    <string name="actualizar_salario">Update Salary</string>
+    <string name="actualizar_salario">Update salary</string>
     <string name="txtsalario">Salary</string>
     <string name="btn_update">Update</string>
     <string name="txt_salario_actual">Actual salary</string>
     <string name="txt_eliminar_gasto">Delete expense</string>
     <string name="btn_manejar_gastos">Managing expenses</string>
     <string name="actualizar_salario2">Update salary</string>
-    <string name="cantidad5">Amount</string>
 </resources>

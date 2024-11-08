@@ -32,8 +32,17 @@
                 android:layout_height="wrap_content"
                 android:text="@string/txt_planeacion_title"
                 android:textColor="@color/white"
-                android:textSize="24sp"
-                tools:ignore="TextContrastCheck,TextContrastCheck" />
+                android:textSize="24sp" />
+
+            <Button
+                android:onClick="PantallaUpdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                android:text="@string/actualizar_salario2"/>
+
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -97,12 +106,6 @@
                 android:orientation="vertical"
                 android:padding="8dp">
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="@color/color_two" />
-
                 <!-- Ejemplo de texto dinámico -->
                 <TextView
                     android:layout_width="wrap_content"
@@ -110,11 +113,10 @@
                     android:text="@string/dinero_inicial"
                     android:textSize="18sp" />
 
-                <!-- Gastos fijos -->
                 <EditText
                     android:id="@+id/txt_planning_dinero_total"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:autofillHints="0"
                     android:enabled="false"
                     android:hint="@string/_0"
@@ -123,9 +125,9 @@
                     android:textColor="@color/color_one"
                     android:textIsSelectable="false"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    android:textStyle="bold" />
 
+                <!-- Gastos fijos -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -135,33 +137,31 @@
                 <EditText
                     android:id="@+id/txt_planning_gastos_fijos"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:hint="@string/_0"
                     android:inputType="number"
                     android:textAlignment="textStart"
                     android:textColor="@color/color_one"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    tools:ignore="Autofill,TouchTargetSizeCheck" />
+                    android:textStyle="bold" />
 
                 <!-- Ahorros -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/PorcentajeAhorro"
+                    android:text="@string/ahorros2"
                     android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/txt_planning_ahorros"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:hint="@string/_0"
                     android:inputType="number"
                     android:textAlignment="textStart"
                     android:textColor="@color/color_one"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    tools:ignore="Autofill,TouchTargetSizeCheck" />
+                    android:textStyle="bold" />
 
                 <!-- Inversion -->
                 <TextView
@@ -173,14 +173,13 @@
                 <EditText
                     android:id="@+id/txt_planning_inversion"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:hint="@string/_0"
                     android:inputType="number"
                     android:textAlignment="textStart"
                     android:textColor="@color/color_one"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -190,26 +189,25 @@
                 <EditText
                     android:id="@+id/TotalSobrante"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:enabled="false"
-                    android:inputType="number"
+                    android:layout_height="40dp"
                     android:text="@string/_0"
+                    android:enabled="false"
                     android:textAlignment="textStart"
                     android:textColor="@color/color_one"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    tools:ignore="Autofill,TouchTargetSizeCheck" />
+                    android:inputType="number"
+                    android:textStyle="bold"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <Button
+            android:onClick="CalcularGastos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:textColor="@color/white"
             android:backgroundTint="#4CAF50"
-            android:onClick="CalcularGastos"
-            android:text="@string/calcular"
-            tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
+            android:layout_marginTop="16dp"
+            android:text="@string/calcular" />
     </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
