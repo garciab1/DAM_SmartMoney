@@ -102,9 +102,9 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="#4CAF50"
                 android:onClick="show_important_expences"
-                android:textColor="@color/white"
-                android:text="@string/add_symbol"
-                android:textAlignment="center" />
+                android:text="@string/agregas_gasto"
+                android:textAlignment="center"
+                android:textColor="@color/white" />
 
         </LinearLayout>
 

@@ -125,7 +125,8 @@
                     android:textColor="@color/color_one"
                     android:textIsSelectable="false"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:ignore="TouchTargetSizeCheck" />
 
                 <!-- Gastos fijos -->
                 <TextView
@@ -143,14 +144,16 @@
                     android:textAlignment="textStart"
                     android:textColor="@color/color_one"
                     android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:ignore="TouchTargetSizeCheck" />
 
                 <!-- Ahorros -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/ahorros2"
-                    android:textSize="18sp" />
+                    android:text="@string/ingresa_el_de_ahorros"
+                    android:textSize="18sp"
+                   />
 
                 <EditText
                     android:id="@+id/txt_planning_ahorros"
@@ -161,7 +164,8 @@
                     android:textAlignment="textStart"
                     android:textColor="@color/color_one"
                     android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:ignore="TouchTargetSizeCheck" />
 
                 <!-- Inversion -->
                 <TextView
@@ -179,7 +183,8 @@
                     android:textAlignment="textStart"
                     android:textColor="@color/color_one"
                     android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:ignore="TouchTargetSizeCheck" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -190,13 +195,14 @@
                     android:id="@+id/TotalSobrante"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:text="@string/_0"
                     android:enabled="false"
+                    android:inputType="number"
+                    android:text="@string/_0"
                     android:textAlignment="textStart"
                     android:textColor="@color/color_one"
                     android:textSize="18sp"
-                    android:inputType="number"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    tools:ignore="TouchTargetSizeCheck" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

@@ -65,8 +65,6 @@
     <string name="gastos">Gastos</string>
     <string name="planeacion">Planeacion</string>
     <string name="acerca">Sobre nosotros</string>
-    <string name="img_photo" translatable="false">Img_photo</string>
-    <string name="nombre_de_categor_a">Nombre de Categoría</string>
-    <string name="nombre_del_gasto">Nombre del gasto</string>
-    <string name="cantidad5">Cantidad</string>
+    <string name="ingresa_el_de_ahorros">Ingresa_el_de_ahorros</string>
+    <string name="agregas_gasto">+ Agregas Gasto</string>
 </resources>
