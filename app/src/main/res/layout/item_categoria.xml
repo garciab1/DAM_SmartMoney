@@ -1,5 +1,6 @@
 <!-- item_categoria.xml -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -9,7 +10,9 @@
         android:id="@+id/imagenImageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:scaleType="centerCrop" />
+        android:contentDescription="categoria"
+        android:scaleType="centerCrop"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/nombreTextView"

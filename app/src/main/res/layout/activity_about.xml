@@ -53,6 +53,7 @@
                     android:layout_width="100dp"
                     android:layout_height="150dp"
                     android:layout_margin="20dp"
+                    android:contentDescription="@string/img_photo"
                     android:scaleType="centerCrop"
                     android:src="@drawable/esme" />
 
@@ -63,10 +64,11 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:paddingTop="8dp"
-                    android:text="Esmeralda Noemi Garcia Borja"
+                    android:text="Esmeralda Noemi García Borja"
                     android:textAlignment="center"
                     android:textColor="@color/textcolor"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    tools:ignore="HardcodedText" />
             </LinearLayout>
 
             <LinearLayout
@@ -79,6 +81,7 @@
                     android:layout_height="150dp"
                     android:layout_margin="20dp"
                     android:scaleType="centerCrop"
+                    android:contentDescription="@string/img_photo"
                     android:src="@drawable/fer" />
 
                 <TextView
@@ -90,7 +93,8 @@
                     android:text="Fernando Ulises Gómez Herrera"
                     android:textAlignment="center"
                     android:textColor="@color/textcolor"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    tools:ignore="HardcodedText" />
             </LinearLayout>
 
             <LinearLayout
@@ -103,6 +107,7 @@
                     android:layout_height="150dp"
                     android:layout_margin="20dp"
                     android:scaleType="centerCrop"
+                    android:contentDescription="@string/img_photo"
                     android:src="@drawable/frank" />
 
                 <TextView
@@ -114,7 +119,8 @@
                     android:text="Jorge Francisco Cisneros Zometa"
                     android:textAlignment="center"
                     android:textColor="@color/textcolor"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    tools:ignore="HardcodedText" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

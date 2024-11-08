@@ -1,5 +1,6 @@
 <!-- res/layout/item_gasto.xml -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -11,7 +12,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/textcolor"
         android:layout_weight="1"
-        android:text="Nombre del gasto"
+        android:text="@string/nombre_del_gasto"
         android:textSize="16sp" />
 
     <TextView
@@ -19,15 +20,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/textcolor"
-        android:text="Cantidad"
+        android:text="@string/cantidad5"
         android:textSize="16sp" />
 
     <ImageButton
         android:id="@+id/btn_eliminar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:contentDescription="Eliminar"
         android:src="@android:drawable/ic_delete"
         android:tint="#FF0000"
-        android:contentDescription="Eliminar"
-        android:background="?android:attr/selectableItemBackground" />
+        tools:ignore="HardcodedText,TouchTargetSizeCheck,UseAppTint" />
 </LinearLayout>

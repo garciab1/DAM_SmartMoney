@@ -3,28 +3,28 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="colorPrimary">#024265</color>
-    <color name="colorPrimaryDark">#024265</color>
-    <color name="colorAccent">#05af9b</color>
+    <color name="colorPrimary">#72B1D4</color>
+    <color name="colorPrimaryDark">#54A4D0</color>
+    <color name="colorAccent">#368279</color>
 
     <color name="color_one">#fb7268</color>
     <color name="color_white">#ededf2</color>
     <color name="color_two">#E3E0E0</color>
 
-    <color name="E1">#FFA726</color>
+    <color name="E1">#C0985D</color>
     <color name="E2">#66BB6A</color>
-    <color name="E3">#EF5350</color>
-    <color name="E4">#29B6F6</color>
-    <color name="E5">#F7FF00</color>
+    <color name="E3">#EB7775</color>
+    <color name="E4">#609DB8</color>
+    <color name="E5">#CACC81</color>
 
-    <color name="color1">#FF5733</color>
-    <color name="color2">#33FF57</color>
-    <color name="color3">#3357FF</color>
-    <color name="color4">#FF33A1</color>
-    <color name="color5">#A133FF</color>
-    <color name="color6">#FF00F2</color>
-    <color name="color7">#FF00B7</color>
-    <color name="color8">#FF0059</color>
+    <color name="color1">#BE7768</color>
+    <color name="color2">#B9F6CA</color>
+    <color name="color3">#7284D9</color>
+    <color name="color4">#FF9E80</color>
+    <color name="color5">#FFFF8D</color>
+    <color name="color6">#84FFFF</color>
+    <color name="color7">#82B1FF</color>
+    <color name="color8">#D291A8</color>
 
     <!-- Colores dia noche -->
     <color name="BackGroundN">#211f26</color>

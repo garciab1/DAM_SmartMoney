@@ -54,7 +54,7 @@
             android:ems="10"
             android:hint="@string/ingrese_la_cantidad"
             android:inputType="numberDecimal"
-            tools:ignore="Autofill" />
+            tools:ignore="Autofill,TextContrastCheck" />
 
     </LinearLayout>
 
@@ -99,7 +99,8 @@
             android:layout_weight="1"
             android:backgroundTint="@color/design_default_color_error"
             android:textColor="@color/white"
-            android:text="@string/x" />
+            android:text="@string/x"
+            tools:ignore="ButtonStyle" />
 
         <Button
             android:id="@+id/btn_important_expences_ok"
@@ -108,7 +109,8 @@
             android:layout_weight="1"
             android:backgroundTint="#1A611B"
             android:textColor="@color/white"
-            android:text="@string/ok" />
+            android:text="@string/ok"
+            tools:ignore="ButtonStyle" />
 
     </LinearLayout>
 </LinearLayout>

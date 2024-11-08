@@ -16,6 +16,6 @@
         android:textColor="@color/textcolor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nombre de Categoría"
+        android:text="@string/nombre_de_categor_a"
         android:textSize="16sp" />
 </LinearLayout>
