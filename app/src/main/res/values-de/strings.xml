@@ -60,4 +60,7 @@
     <string name="actualizar_salario2">Gehalt aktualisieren</string>
     <string name="agregas_gasto">+ Kosten hinzufügen</string>
     <string name="ingresa_el_de_ahorros2">Ersparnis %:</string>
+    <string name="nombre_de_categor_a">" Kategoriename"</string>
+    <string name="nombre_del_gasto">Name der Ausgabe</string>
+    <string name="cantidad5">" Menge"</string>
 </resources>

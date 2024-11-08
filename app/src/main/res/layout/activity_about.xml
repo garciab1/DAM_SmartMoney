@@ -53,9 +53,10 @@
                     android:layout_width="100dp"
                     android:layout_height="150dp"
                     android:layout_margin="20dp"
-                    android:contentDescription="@string/img_photo"
+                    android:contentDescription="img_photo"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/esme" />
+                    android:src="@drawable/esme"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/nombreTextView"
@@ -81,8 +82,9 @@
                     android:layout_height="150dp"
                     android:layout_margin="20dp"
                     android:scaleType="centerCrop"
-                    android:contentDescription="@string/img_photo"
-                    android:src="@drawable/fer" />
+                    android:contentDescription="img_photo"
+                    android:src="@drawable/fer"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -107,8 +109,9 @@
                     android:layout_height="150dp"
                     android:layout_margin="20dp"
                     android:scaleType="centerCrop"
-                    android:contentDescription="@string/img_photo"
-                    android:src="@drawable/frank" />
+                    android:contentDescription="img_photo"
+                    android:src="@drawable/frank"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:layout_width="wrap_content"

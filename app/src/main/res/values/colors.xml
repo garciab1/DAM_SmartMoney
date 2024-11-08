@@ -25,6 +25,27 @@
     <color name="color6">#A7FFEB</color>
     <color name="color7">#B9F6CA</color>
     <color name="color8">#EA80FC</color>
+    <color name="color9">#7D1B13</color>
+    <color name="color10">#5B9F0C</color>
+    <color name="color12">#072F41</color>
+    <color name="color13">#5A20C2</color>
+    <color name="color14">#08362C</color>
+    <color name="color15">#0E6928</color>
+    <color name="color16">#42064C</color>
+    <color name="color17">#070E2B</color>
+    <color name="color18">#082D3D</color>
+    <color name="color19">#2A1948</color>
+    <color name="color20">#012B22</color>
+    <color name="color21">#480606</color>
+    <color name="color22">#2F2231</color>
+    <color name="color23">#FFFF8D</color>
+    <color name="color24">#E20F174E</color>
+    <color name="color25">#0B9130</color>
+    <color name="color26">#2E252F</color>
+    <color name="color27">#72737B</color>
+    <color name="color28">#0F3B4E</color>
+    <color name="color29">#6319E6</color>
+    <color name="color30">#53A18F</color>
 
     <!-- Colores dia noche -->
     <color name="BackGroundN">#211f26</color>

@@ -68,4 +68,7 @@
     <string name="ingresa_el_de_ahorros" translatable="false">Ingresa_el_de_ahorros</string>
     <string name="agregas_gasto">+ Agregas Gasto</string>
     <string name="ingresa_el_de_ahorros2">Ingresa el % de ahorros:</string>
+    <string name="nombre_de_categor_a">Nombre de Categoría</string>
+    <string name="nombre_del_gasto">Nombre del Gasto</string>
+    <string name="cantidad5">Cantidad</string>
 </resources>
