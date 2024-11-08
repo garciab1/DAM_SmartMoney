@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">DAM-SmartMoney</string>
-    <string name="gastos_fijos">Gastos fijos:</string>
+    <string name="gastos_fijos">"Gastos fijos %: "</string>
     <string name="total">Total:</string>
     <string name="ahorros">Ahorros:</string>
     <string name="inversion">Inversión:</string>
     <string name="mes">Mes</string>
-    <string name="add">+ Agregar</string>
+    <string name="add">+ Agregar Gasto</string>
     <string name="add_symbol" translatable="false">+</string>
     <string name="calcular">Calcular</string>
     <string name="money">$$.$$</string>
@@ -40,35 +40,33 @@
     <string name="_0" translatable="false">0</string>
     <string name="cantidad2">Cantidad:</string>
     <string name="agregar_gasto">Agregar gasto</string>
-    <string name="gastos">Gastos</string>
     <string name="a_o">Año</string>
     <string name="categoria3">Categoria</string>
     <string name="a_adir_imagen">Añadir imagen</string>
     <string name="dinero_total">Dinero total:</string>
     <string name="planning" translatable="false">Planning</string>
-    <string name="ahorros2">Ahorros %</string>
-    <string name="inversi_n">Inversión:</string>
-    <string name="total_sobrante">Total sobrante:</string>
-    <string name="dinero_inicial">Dinero Inicial:</string>
+    <string name="ahorros2">Ahorros %:</string>
+    <string name="inversi_n">Inversión %:</string>
+    <string name="total_sobrante">Total restante:</string>
+    <string name="dinero_inicial">Dinero inicial:</string>
     <string name="categor_a">Categoría:</string>
     <string name="ingrese_la_cantidad">Ingrese la cantidad</string>
     <string name="evento">Evento:</string>
     <string name="fecha2">Fecha:</string>
-    <string name="img_photo" translatable="false">Img_photo</string>
-    <string name="cantidad5">Cantidad</string>
-    <string name="nombre_del_gasto" translatable="false">Nombre del gasto</string>
-    <string name="nombre_de_categor_a" translatable="false">Nombre de Categoría</string>
-    <string name="planeacion">planeacion</string>
-    <string name="acerca">acerca</string>
-    <string name="acerca_de_nosotros">Acerca de Nosotros</string>
-    <string name="inicio">inicio</string>
-    <string name="actualizar_salario">Actualizar Salario</string>
-    <string name="txtsalario">Salario</string>
+    <string name="acerca_de_nosotros">Acerca de nosotros</string>
+    <string name="actualizar_salario">Actualizar salario</string>
+    <string name="txtsalario">Salario:</string>
     <string name="btn_update">Actualizar</string>
-    <string name="txt_salario_actual">"Eliminar "</string>
-    <string name="txt_eliminar_gasto">"Eliminar "</string>
-    <string name="btn_manejar_gastos">Manejar Gastos</string>
-    <string name="actualizar_salario2">Actualizar</string>
-    <string name="PorcentajeAhorro">Porcentaje se quiere ahorrar %%</string>
-
+    <string name="txt_salario_actual">Salario actual</string>
+    <string name="txt_eliminar_gasto">Eliminar gasto</string>
+    <string name="btn_manejar_gastos">Manejar gastos</string>
+    <string name="actualizar_salario2">Actualizar salario</string>
+    <string name="inicio">Inicio</string>
+    <string name="gastos">Gastos</string>
+    <string name="planeacion">Planeacion</string>
+    <string name="acerca">Sobre nosotros</string>
+    <string name="img_photo" translatable="false">Img_photo</string>
+    <string name="nombre_de_categor_a">Nombre de Categoría</string>
+    <string name="nombre_del_gasto">Nombre del gasto</string>
+    <string name="cantidad5">Cantidad</string>
 </resources>

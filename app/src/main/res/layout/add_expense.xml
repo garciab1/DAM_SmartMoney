@@ -53,7 +53,8 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="@string/money"
-            android:inputType="number" />
+            android:inputType="number"
+            tools:ignore="Autofill" />
     </LinearLayout>
 
     <LinearLayout
@@ -68,7 +69,8 @@
             android:text="@string/fecha"
             android:textAlignment="textEnd"
             android:textColor="@color/textcolor"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            tools:ignore="InefficientWeight" />
 
         <TextView
             android:id="@+id/fecha_expence"
@@ -116,7 +118,8 @@
             android:layout_weight="1"
             android:backgroundTint="@color/design_default_color_error"
             android:text="@string/x"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            tools:ignore="ButtonStyle" />
 
         <Button
             android:id="@+id/btn_ok_expence"
@@ -125,7 +128,7 @@
             android:layout_weight="1"
             android:backgroundTint="#1A611B"
             android:text="@string/ok"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            tools:ignore="ButtonStyle" />
     </LinearLayout>
-
 </LinearLayout>

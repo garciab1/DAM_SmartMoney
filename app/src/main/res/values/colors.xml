@@ -3,19 +3,19 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="colorPrimary">#72B1D4</color>
-    <color name="colorPrimaryDark">#54A4D0</color>
-    <color name="colorAccent">#368279</color>
+    <color name="colorPrimary">#024265</color>
+    <color name="colorPrimaryDark">#024265</color>
+    <color name="colorAccent">#05af9b</color>
 
     <color name="color_one">#fb7268</color>
     <color name="color_white">#ededf2</color>
     <color name="color_two">#E3E0E0</color>
 
-    <color name="E1">#C0985D</color>
+    <color name="E1">#FFA726</color>
     <color name="E2">#66BB6A</color>
-    <color name="E3">#EB7775</color>
-    <color name="E4">#609DB8</color>
-    <color name="E5">#CACC81</color>
+    <color name="E3">#EF5350</color>
+    <color name="E4">#29B6F6</color>
+    <color name="E5">#F7FF00</color>
 
     <color name="color1">#BE7768</color>
     <color name="color2">#B9F6CA</color>
@@ -25,6 +25,29 @@
     <color name="color6">#84FFFF</color>
     <color name="color7">#82B1FF</color>
     <color name="color8">#D291A8</color>
+    <color name="color9">#FF8A65</color>
+    <color name="color10">#A1887F</color>
+    <color name="color11">#90CAF9</color>
+    <color name="color12">#A5D6A7</color>
+    <color name="color13">#FFE082</color>
+    <color name="color14">#FFAB91</color>
+    <color name="color15">#80DEEA</color>
+    <color name="color16">#FFCDD2</color>
+    <color name="color17">#B39DDB</color>
+    <color name="color18">#F8BBD0</color>
+    <color name="color19">#FFCCBC</color>
+    <color name="color20">#C5E1A5</color>
+    <color name="color21">#E6EE9C</color>
+    <color name="color22">#80CBC4</color>
+    <color name="color23">#CE93D8</color>
+    <color name="color24">#FFCC80</color>
+    <color name="color25">#D1C4E9</color>
+    <color name="color26">#FFF59D</color>
+    <color name="color27">#FFAB40</color>
+    <color name="color28">#FF8A80</color>
+    <color name="color29">#9FA8DA</color>
+    <color name="color30">#FFEB3B</color>
+
 
     <!-- Colores dia noche -->
     <color name="BackGroundN">#211f26</color>
