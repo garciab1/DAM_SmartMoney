@@ -91,6 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:enabled="true"
+                android:inputType="numberDecimal"
                 android:text="@string/_0"
                 android:textSize="24sp"/>
         </LinearLayout>
