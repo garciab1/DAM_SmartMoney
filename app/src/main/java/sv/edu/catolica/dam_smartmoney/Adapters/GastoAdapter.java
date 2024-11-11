@@ -48,15 +48,15 @@ public class GastoAdapter extends ArrayAdapter<Gasto> {
 
         // Configurar el botón de eliminar con confirmación
         btnEliminar.setOnClickListener(view -> new AlertDialog.Builder(context)
-                .setTitle("Confirmar eliminación")
-                .setMessage("¿Estás seguro de que deseas eliminar este gasto?")
-                .setPositiveButton("Sí", (dialog, which) -> {
+                .setTitle(R.string.confirmar_eliminaci_n)
+                .setMessage(R.string.est_s_seguro_de_que_deseas_eliminar_este_gasto)
+                .setPositiveButton(R.string.s, (dialog, which) -> {
                     // Eliminar el gasto de la base de datos
                     dbHelper.eliminarGasto(gasto.getId());
                     gastos.remove(position); // Eliminar de la lista
                     notifyDataSetChanged(); // Actualizar la vista
                 })
-                .setNegativeButton("No", null)
+                .setNegativeButton(R.string.no, null)
                 .show());
 
         return convertView;
