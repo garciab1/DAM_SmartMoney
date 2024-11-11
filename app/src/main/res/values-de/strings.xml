@@ -101,4 +101,8 @@
     <string name="monto_no_v_lido">Ungültiger Betrag</string>
     <string name="creaci_n_de_datos_completada">Datenerstellung abgeschlossen</string>
     <string name="ocurri_un_error_al_crear_el_usuario">Beim Erstellen des Benutzers ist ein Fehler aufgetreten</string>
+    <string name="confirmar_eliminaci_n">Bestätigen Sie den Löschvorgang</string>
+    <string name="est_s_seguro_de_que_deseas_eliminar_este_gasto">Sind Sie sicher, dass Sie diese Kosten vermeiden möchten?</string>
+    <string name="s">Ja</string>
+    <string name="no">Nein</string>
 </resources>

@@ -101,4 +101,8 @@
     <string name="monto_no_v_lido">Invalid amount</string>
     <string name="creaci_n_de_datos_completada">Data creation completed</string>
     <string name="ocurri_un_error_al_crear_el_usuario">An error occurred while creating the user</string>
+    <string name="confirmar_eliminaci_n">Confirm delete</string>
+    <string name="est_s_seguro_de_que_deseas_eliminar_este_gasto">Are you sure you want to delete this expense?</string>
+    <string name="s">Yes</string>
+    <string name="no">No</string>
 </resources>

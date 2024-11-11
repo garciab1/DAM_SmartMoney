@@ -101,4 +101,8 @@
     <string name="monto_no_v_lido">Importo non valido</string>
     <string name="creaci_n_de_datos_completada">Creazione dei dati completata</string>
     <string name="ocurri_un_error_al_crear_el_usuario">Si è verificato un errore durante la creazione dell\'utente</string>
+    <string name="confirmar_eliminaci_n">Conferma l\'eliminazione</string>
+    <string name="est_s_seguro_de_que_deseas_eliminar_este_gasto">Sei sicuro di voler eliminare questa spesa?</string>
+    <string name="s">Sì</string>
+    <string name="no">No</string>
 </resources>
