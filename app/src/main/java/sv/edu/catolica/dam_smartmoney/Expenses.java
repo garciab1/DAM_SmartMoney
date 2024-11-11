@@ -173,14 +173,14 @@ public class Expenses extends AppCompatActivity {
 
                 String nombreGasto = nombre.getText().toString();
                 String fechaText = fecha_expence.getText().toString();
-                String tipoPago = "No importante";
+                String tipoPago = getString(R.string.no_importante);
                 String categoria = spinnerCategoria.getSelectedItem().toString();
 
                 DatabaseHelper db = new DatabaseHelper(Expenses.this);
                 double DineroTotal = db.get_saldo();
 
                 if (nombreGasto.isEmpty()) {
-                    mensajemanager("Por favor, ingresa un nombre para el gasto");
+                    mensajemanager(getString(R.string.por_favor_ingresa_un_nombre_para_el_gasto));
                     return;
                 }
 
@@ -188,12 +188,12 @@ public class Expenses extends AppCompatActivity {
                 try {
                     cantidad = Double.parseDouble(cantidadField.getText().toString());
                 } catch (NumberFormatException e) {
-                    mensajemanager("Por favor, ingresa una cantidad válida");
+                    mensajemanager(getString(R.string.por_favor_ingresa_una_cantidad_v_lida));
                     return;
                 }
 
                 if (cantidad > DineroTotal){
-                    mensajemanager("No hay suficiente saldo para procesar la transaccion");
+                    mensajemanager(getString(R.string.no_hay_suficiente_saldo_para_procesar_la_transaccion));
                     return;
                 }
 
@@ -203,7 +203,7 @@ public class Expenses extends AppCompatActivity {
                     // Cambiar el formato "dd/MM/yyyy" y asegurarse de pasar 'fechaText' (la fecha introducida)
                     fecha = new java.text.SimpleDateFormat("dd/MM/yyyy").parse(fechaText);
                 } catch (java.text.ParseException e) {
-                    mensajemanager("Fecha inválida");
+                    mensajemanager(getString(R.string.fecha_inv_lida));
                     return;
                 }
 
@@ -214,10 +214,10 @@ public class Expenses extends AppCompatActivity {
                     cantidadField.setText("");
                     fecha_expence.setText("dd/MM/yyyy");
 
-                    mensajemanager("Gasto creado correctamente");
+                    mensajemanager(getString(R.string.gasto_creado_correctamente));
                     startActivity(new Intent(Expenses.this, Expenses.class));
                 } else {
-                    mensajemanager("Ocurrio un error al crear el gasto");
+                    mensajemanager(getString(R.string.ocurrio_un_error_al_crear_el_gasto));
                 }
 
             }
@@ -246,7 +246,7 @@ public class Expenses extends AppCompatActivity {
         int[] categoriaColores = new int[colors.length];
 
         if (totalGasto == 0) {
-            pieChart.addPieSlice(new PieModel("Sin Gastos", 100, Color.GRAY));
+            pieChart.addPieSlice(new PieModel(getString(R.string.sin_gastos), 100, Color.GRAY));
             pieChart.startAnimation();
             return;
         }

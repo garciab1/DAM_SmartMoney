@@ -51,7 +51,7 @@ public class updatesalario extends AppCompatActivity {
 
         // Verificar si el campo está vacío
         if (updatesalario.getText().toString().isEmpty()) {
-            mensajes("El campo del salario no puede estar vacío");
+            mensajes(getString(R.string.el_campo_del_salario_no_puede_estar_vac_o));
             return;
         }
 
@@ -59,16 +59,16 @@ public class updatesalario extends AppCompatActivity {
 
         // Verificar que el valor no sea menor o igual a 0
         if (nuevosalario <= 0) {
-            mensajes("El salario no puede ser 0 o menor de 0");
+            mensajes(getString(R.string.el_salario_no_puede_ser_0_o_menor_de_0));
             return;
         }
 
         boolean salarionuevo = db.UpdateSalario(nuevosalario);
         if (salarionuevo) {
-            mensajes("Salario modificado");
+            mensajes(getString(R.string.salario_modificado));
             getsalario();
         } else {
-            mensajes("No se pudo actualizar el salario");
+            mensajes(getString(R.string.no_se_pudo_actualizar_el_salario));
         }
     }
 

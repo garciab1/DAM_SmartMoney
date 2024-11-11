@@ -36,7 +36,7 @@ public class welcome extends AppCompatActivity {
         if (!dbHelper.verificarnuevousuario()) {
             crearusuario();
         } else {
-            mensajes("Ya existe un usuario registrado.");
+            mensajes(getString(R.string.ya_existe_un_usuario_registrado));
         }
     }
 
@@ -50,7 +50,7 @@ public class welcome extends AppCompatActivity {
 
         // Validación de entradas
         if (nombre.isEmpty()) {
-            mensajes("El campo de nombre está vacío");
+            mensajes(getString(R.string.el_campo_de_nombre_est_vac_o));
             return;
         }
 
@@ -58,7 +58,7 @@ public class welcome extends AppCompatActivity {
         try {
             monto = Double.parseDouble(montoString);
         } catch (NumberFormatException e) {
-            mensajes("Monto no válido");
+            mensajes(getString(R.string.monto_no_v_lido));
             return;
         }
 
@@ -66,12 +66,12 @@ public class welcome extends AppCompatActivity {
         boolean creacion = db.crear_usuario(nombre, monto);
 
         if (creacion) {
-            mensajes("Creación de datos completada");
+            mensajes(getString(R.string.creaci_n_de_datos_completada));
             Intent redirecion = new Intent(welcome.this, MainActivity.class);
             startActivity(redirecion);
             finish();
         } else {
-            mensajes("Ocurrió un error al crear el usuario");
+            mensajes(getString(R.string.ocurri_un_error_al_crear_el_usuario));
         }
     }
 

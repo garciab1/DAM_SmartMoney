@@ -3,8 +3,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="colorPrimary">#024265</color>
-    <color name="colorPrimaryDark">#024265</color>
+    <color name="colorPrimary">#0E9BE7</color>
+    <color name="colorPrimaryDark">#57A5D0</color>
     <color name="colorAccent">#05af9b</color>
 
     <color name="color_one">#fb7268</color>
@@ -19,7 +19,7 @@
 
     <color name="color1">#FF8A80</color>
     <color name="color2">#CCFF90</color>
-    <color name="color3">#3A436B</color>
+    <color name="color3">#092398</color>
     <color name="color4">#80D8FF</color>
     <color name="color5">#B388FF</color>
     <color name="color6">#A7FFEB</color>
@@ -27,23 +27,24 @@
     <color name="color8">#EA80FC</color>
     <color name="color9">#7D1B13</color>
     <color name="color10">#5B9F0C</color>
-    <color name="color12">#072F41</color>
+    <color name="color11">#4391B5</color>
+    <color name="color12">#406779</color>
     <color name="color13">#5A20C2</color>
-    <color name="color14">#08362C</color>
-    <color name="color15">#0E6928</color>
-    <color name="color16">#42064C</color>
-    <color name="color17">#070E2B</color>
-    <color name="color18">#082D3D</color>
-    <color name="color19">#2A1948</color>
-    <color name="color20">#012B22</color>
-    <color name="color21">#480606</color>
-    <color name="color22">#2F2231</color>
-    <color name="color23">#FFFF8D</color>
-    <color name="color24">#E20F174E</color>
+    <color name="color14">#0DC79C</color>
+    <color name="color15">#587761</color>
+    <color name="color16">#654E69</color>
+    <color name="color17">#163ACE</color>
+    <color name="color18">#4AB6E4</color>
+    <color name="color19">#A57BEF</color>
+    <color name="color20">#329C85</color>
+    <color name="color21">#DD1515</color>
+    <color name="color22">#D502F6</color>
+    <color name="color23">#E2E20E</color>
+    <color name="color24">#E20B29F6</color>
     <color name="color25">#0B9130</color>
-    <color name="color26">#2E252F</color>
+    <color name="color26">#CA16DE</color>
     <color name="color27">#72737B</color>
-    <color name="color28">#0F3B4E</color>
+    <color name="color28">#10A7E7</color>
     <color name="color29">#6319E6</color>
     <color name="color30">#53A18F</color>
 

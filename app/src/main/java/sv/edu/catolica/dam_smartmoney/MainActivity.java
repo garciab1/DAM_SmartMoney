@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     // Si no hay evento, mostrar Toast
                     int duracion = 800;
-                    Toast toast = Toast.makeText(MainActivity.this, "Nada en este día", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(MainActivity.this, R.string.nada_en_este_d_a, Toast.LENGTH_SHORT);
                     toast.show();
                     new Handler().postDelayed(toast::cancel, duracion);
                 }
@@ -184,11 +184,11 @@ public class MainActivity extends AppCompatActivity {
                 boolean verificacion_crear_cat = db.crear_categorias(categoria, "NULL", uri);
 
                 if (verificacion_crear_cat){
-                    mensajemanager("La creacion de la categoria a sido exitosa");
+                    mensajemanager(getString(R.string.la_creacion_de_la_categoria_a_sido_exitosa));
                     btncategoria.setText("");
                     selectedImageUri = null;
                 }else{
-                    mensajemanager("Ocurrio un error al mostrar la categoria");
+                    mensajemanager(getString(R.string.ocurrio_un_error_al_mostrar_la_categoria));
                     selectedImageUri = null;
                 }
             }
@@ -246,11 +246,11 @@ public class MainActivity extends AppCompatActivity {
 
                 String nombreGasto = nombre_add.getText().toString();
                 String fechaText = textViewFecha.getText().toString();
-                String tipoPago = "Importante"; // Aquí lo ajustas si tienes otro valor en mente
+                String tipoPago = getString(R.string.importante); // Aquí lo ajustas si tienes otro valor en mente
                 double SaldoTotal = db.get_saldo();
 
                 if (nombreGasto.isEmpty()) {
-                    mensajemanager("Por favor, ingresa un nombre para el gasto");
+                    mensajemanager(getString(R.string.por_favor_ingresa_un_nombre_para_el_gasto2));
                     return;
                 }
 
@@ -258,12 +258,12 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     cantidad = Double.parseDouble(cantidadField.getText().toString());
                 } catch (NumberFormatException e) {
-                    mensajemanager("Por favor, ingresa una cantidad válida");
+                    mensajemanager(getString(R.string.por_favor_ingresa_una_cantidad_v_lida2));
                     return;
                 }
 
                 if (cantidad > SaldoTotal){
-                    mensajemanager("No hay suficiente saldo para procesar la transaccion");
+                    mensajemanager(getString(R.string.no_hay_suficiente_saldo_para_procesar_la_transaccion2));
                     return;
                 }
 
@@ -273,22 +273,22 @@ public class MainActivity extends AppCompatActivity {
                     // Cambiar el formato "dd/MM/yyyy" y asegurarse de pasar 'fechaText' (la fecha introducida)
                     fecha = new java.text.SimpleDateFormat("dd/MM/yyyy").parse(fechaText);
                 } catch (java.text.ParseException e) {
-                    mensajemanager("Fecha inválida");
+                    mensajemanager(getString(R.string.fecha_inv_lida2));
                     return;
                 }
 
                 // Llamar al método crear_gasto con los datos obtenidos
-                boolean crear = db.crear_gasto(fecha, nombreGasto, cantidad, tipoPago, "Importante");
+                boolean crear = db.crear_gasto(fecha, nombreGasto, cantidad, tipoPago, getString(R.string.importanteq));
                 if (crear){
                     nombre_add.setText("");
                     cantidadField.setText("");
                     textViewFecha.setText("dd/MM/yyyy");
-                    mensajemanager("Gasto creado correctamente");
+                    mensajemanager(getString(R.string.gasto_creado_correctamenteq));
 
                     get_important_expences();
                     get_money();
                 } else {
-                    mensajemanager("Ocurrio un error al crear el gasto");
+                    mensajemanager(getString(R.string.ocurrio_un_error_al_crear_el_gasto1));
                 }
             }
         });
@@ -357,9 +357,9 @@ public class MainActivity extends AppCompatActivity {
 
             // Guardar la URI en la variable de clase
             this.selectedImageUri = Uri.fromFile(imageFile);  // Actualiza selectedImageUri
-            Toast.makeText(this, "Imagen guardada en: " + selectedImageUri.toString(), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.imagen_guardada_en) + selectedImageUri.toString(), Toast.LENGTH_LONG).show();
         } catch (IOException e) {
-            Toast.makeText(this, "Error al guardar la imagen", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_al_guardar_la_imagen), Toast.LENGTH_SHORT).show();
         }
     }
 

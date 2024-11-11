@@ -83,6 +83,7 @@ public class Planning extends AppCompatActivity {
         txtTotal.setText(String.format("%.2f", total));
     }
 
+    @SuppressLint("DefaultLocale")
     public void CalcularGastos(View view) {
         DatabaseHelper db = new DatabaseHelper(Planning.this);
 
@@ -102,7 +103,7 @@ public class Planning extends AppCompatActivity {
         // Verificar que el porcentaje total no exceda el 100%
         int totalPercentage = gastoFijoPercent + ahorroPercent + inversionPercent;
         if (totalPercentage > 100) {
-            Toast.makeText(this, "El total de los porcentajes no puede exceder el 100%", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.el_total_de_los_porcentajes_no_puede_exceder_el_100, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -110,21 +111,21 @@ public class Planning extends AppCompatActivity {
         PieChart pieChart = findViewById(R.id.piechart);
         pieChart.clearChart();
 
-        pieChart.addPieSlice(new PieModel("Gasto Fijo", (float) gastoFijo, Color.parseColor("#FFA726")));
-        pieChart.addPieSlice(new PieModel("Ahorro", (float) ahorro, Color.parseColor("#66BB6A")));
-        pieChart.addPieSlice(new PieModel("Inversión", (float) inversion, Color.parseColor("#EF5350")));
+        pieChart.addPieSlice(new PieModel(getString(R.string.gasto_fijo), (float) gastoFijo, Color.parseColor("#FFA726")));
+        pieChart.addPieSlice(new PieModel(getString(R.string.ahorro), (float) ahorro, Color.parseColor("#66BB6A")));
+        pieChart.addPieSlice(new PieModel(getString(R.string.inversion1), (float) inversion, Color.parseColor("#EF5350")));
 
         pieChart.startAnimation();
 
         // Mostrar resultados en la lista
         ListView listaPlanning = findViewById(R.id.lista_planning);
         String[] items = {
-                String.format("Gasto Fijo: %.2f", gastoFijo),
-                String.format("Ahorro: %.2f", ahorro),
-                String.format("Inversión: %.2f", inversion),
+                String.format(getString(R.string.gasto_fijo_2f), gastoFijo),
+                String.format(getString(R.string.ahorro_2f), ahorro),
+                String.format(getString(R.string.inversi_n_2f), inversion),
         };
 
-        txtTotalSobrante.setText(String.format("Total Disponible: %.2f", total - (gastoFijo + ahorro + inversion)));
+        txtTotalSobrante.setText(String.format(getString(R.string.total_disponible_2f), total - (gastoFijo + ahorro + inversion)));
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
         listaPlanning.setAdapter(adapter);
