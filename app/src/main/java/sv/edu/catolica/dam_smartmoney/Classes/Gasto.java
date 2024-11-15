@@ -17,7 +17,6 @@ public class Gasto {
         this.pagoGasto = pagoGasto;
     }
 
-    // Getters and setters for each field
     public int getId() { return id; }
     public String getNombreGasto() { return nombreGasto; }
     public double getCantidad() { return cantidad; }
