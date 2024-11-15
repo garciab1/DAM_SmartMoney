@@ -261,7 +261,7 @@ public class Expenses extends AppCompatActivity {
             pieChart.addPieSlice(new PieModel(categoria, porcentaje, color));
 
             // Agregar el color al mapa
-            listaCategorias.add(new Categoria(categoria, null)); // Asumimos que aquí no tienes URI de imagen
+            listaCategorias.add(new Categoria(null, categoria, null)); // Asumimos que aquí no tienes URI de imagen
             categoriaColores[listaCategorias.size() - 1] = color; // Guardar el color correspondiente
         }
 

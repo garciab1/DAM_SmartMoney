@@ -148,19 +148,55 @@ public class DatabaseHelper {
         List<Categoria> categorias = new ArrayList<>();
         Database database = new Database(context);
         SQLiteDatabase db = database.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT categoria_nombre, imagen_uri FROM Categoria", null);
+        Cursor cursor = db.rawQuery("SELECT id, categoria_nombre, imagen_uri FROM Categoria", null);
 
         if (cursor.moveToFirst()) {
             do {
-                String CategoriaName = cursor.getString(0);
-                String ImagenURI = cursor.getString(1);
+                String CategoriaID = cursor.getString(0);
+                String CategoriaName = cursor.getString(1);
+                String ImagenURI = cursor.getString(2);
 
-                categorias.add(new Categoria(CategoriaName, ImagenURI));
+                categorias.add(new Categoria(CategoriaID, CategoriaName, ImagenURI));
             } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
         return categorias;
+    }
+
+    public void deleteCategoria(String ID) {
+        Database database = new Database(context);
+        SQLiteDatabase db = database.getWritableDatabase();
+
+        try {
+            db.beginTransaction();
+
+            // Primero, obtenemos los IDs de los pagos asociados con los gastos de esta categoría
+            Cursor cursor = db.rawQuery(
+                    "SELECT pago_gasto FROM Gasto WHERE categoria_gasto = ?",
+                    new String[]{ID}
+            );
+
+            // Recorremos los resultados y eliminamos cada pago individualmente
+            while (cursor.moveToNext()) {
+                String pagoID = cursor.getString(0);
+                db.delete("Pagos", "id = ?", new String[]{pagoID});
+            }
+            cursor.close();
+
+            // Luego, eliminamos los gastos de la categoría
+            db.delete("Gasto", "categoria_gasto = ?", new String[]{ID});
+
+            // Finalmente, eliminamos la categoría en sí
+            db.delete("Categoria", "id = ?", new String[]{ID});
+
+            // Confirma los cambios
+            db.setTransactionSuccessful();
+        } finally {
+            // Finaliza la transacción
+            db.endTransaction();
+            db.close();
+        }
     }
 
     public boolean crear_gasto(Date fecha, String nombreGasto, Double cantidad, String tipo, String categoria) {
@@ -219,12 +255,15 @@ public class DatabaseHelper {
         Database database = new Database(context);
         SQLiteDatabase db = database.getReadableDatabase();
 
-        Cursor cursor = db.rawQuery("SELECT Gasto.nombre_gasto, Pagos.cantidad FROM Gasto JOIN Pagos ON Pagos.id == Gasto.pago_gasto ", null);
+        Cursor cursor = db.rawQuery("SELECT Gasto.nombre_gasto, Fechas.fecha, Pagos.cantidad FROM Gasto " +
+                "JOIN Pagos ON Pagos.id == Gasto.pago_gasto " +
+                "JOIN Fechas ON Fechas.id == Gasto.fecha_gasto", null);
         if (cursor.moveToFirst()){
             do{
                 String nombreGasto = cursor.getString(0);
-                double cantidad = cursor.getDouble(1);
-                pagos_importantes.add("Gasto: " + nombreGasto + ", Cantidad: " + cantidad);
+                String fechaGasto = cursor.getString(1);
+                double cantidad = cursor.getDouble(2);
+                pagos_importantes.add("Gasto: " + nombreGasto + "\n" + "Fecha: " + fechaGasto + "\n" + "Cantidad: " + cantidad);
             }while (cursor.moveToNext());
         }
         cursor.close();
@@ -322,14 +361,51 @@ public class DatabaseHelper {
         return gastoDetalles.toString();
     }
 
-    public boolean UpdateSalario(Double salarioNuevo){
+    public boolean UpdateSalario(Double salarioNuevo, String tipo) {
         Database database = new Database(context);
         SQLiteDatabase db = database.getReadableDatabase();
 
-        ContentValues values = new ContentValues();
-        values.put("dinero", salarioNuevo);
+        // Obtener el saldo actual del usuario
+        Cursor cursor = db.rawQuery("SELECT dinero FROM Usuarios ORDER BY id DESC LIMIT 1", null);
+        if (!cursor.moveToFirst()) {
+            cursor.close();
+            db.close();
+            return false; // No se pudo obtener el salario actual
+        }
 
-        int rowsUpdated = db.update("Usuarios", values, null, null); // Sin condición para actualizar todos
+        Double salarioActual = cursor.getDouble(0); // Columna 0, porque solo seleccionaste "dinero"
+        cursor.close();
+
+        // Obtener el total de gastos acumulados
+        Cursor cursorGastos = db.rawQuery("SELECT SUM(cantidad) FROM Pagos", null);
+        Double gastosTotales = 0.0; // Valor predeterminado en caso de que no haya gastos
+        if (cursorGastos.moveToFirst()) {
+            gastosTotales = cursorGastos.getDouble(0); // Columna 0, suma de los gastos
+        }
+        cursorGastos.close();
+
+        // Calcular el nuevo salario
+        Double salarioActualizado;
+        if ("SUMA".equals(tipo)) {
+            salarioActualizado = salarioActual + salarioNuevo;
+        } else if ("RESTA".equals(tipo)) {
+            salarioActualizado = salarioActual - salarioNuevo;
+
+            // Verificar que el saldo actualizado no sea menor que los gastos acumulados
+            if (salarioActualizado < gastosTotales) {
+                db.close();
+                return false; // No se permite que el saldo sea menor que los gastos totales
+            }
+        } else {
+            db.close();
+            return false; // Tipo de operación no válido
+        }
+
+        // Actualizar el saldo en la base de datos
+        ContentValues values = new ContentValues();
+        values.put("dinero", salarioActualizado);
+
+        int rowsUpdated = db.update("Usuarios", values, null, null);
         db.close();
 
         return rowsUpdated > 0;

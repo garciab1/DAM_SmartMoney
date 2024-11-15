@@ -181,6 +181,11 @@ public class MainActivity extends AppCompatActivity {
                 String categoria = btncategoria.getText().toString();
                 String uri = (selectedImageUri != null) ? selectedImageUri.toString() : null;
 
+                if (categoria.isEmpty()){
+                    mensajemanager("No puede crear una categoria vacia");
+                    return;
+                }
+
                 boolean verificacion_crear_cat = db.crear_categorias(categoria, "NULL", uri);
 
                 if (verificacion_crear_cat){
@@ -278,7 +283,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 // Llamar al método crear_gasto con los datos obtenidos
-                boolean crear = db.crear_gasto(fecha, nombreGasto, cantidad, tipoPago, getString(R.string.importanteq));
+                boolean crear = db.crear_gasto(fecha, nombreGasto, cantidad, tipoPago, "Importante");
                 if (crear){
                     nombre_add.setText("");
                     cantidadField.setText("");

@@ -56,7 +56,6 @@
     <string name="acerca_de_nosotros">Acerca de nosotros</string>
     <string name="actualizar_salario">Actualizar salario</string>
     <string name="txtsalario">Salario:</string>
-    <string name="btn_update">Actualizar</string>
     <string name="txt_salario_actual">Salario actual</string>
     <string name="txt_eliminar_gasto">Eliminar gasto</string>
     <string name="btn_manejar_gastos">Manejar gastos</string>
@@ -113,4 +112,11 @@
     <string name="est_s_seguro_de_que_deseas_eliminar_este_gasto">¿Estás seguro de que deseas eliminar este gasto?</string>
     <string name="s">Sí</string>
     <string name="no">No</string>
+    <string name="confirmar_eliminacion_codigo">Confirmar Eliminacion</string>
+    <string name="confirmar_msg_codigo">Todos los gastos relacionados con esta categoría se eliminarán. ¿Está seguro?</string>
+    <string name="btn_eliminar_codigo">Eliminar</string>
+    <string name="btn_cancelar_codigo">Cancelar</string>
+    <string name="btn_add_salary">Añadir</string>
+    <string name="btn_substract_salary">Restar</string>
+    <string name="esta_restando_m_s_de_lo_que_tiene_actualmente">Esta restando más de lo que tiene actualmente</string>
 </resources>

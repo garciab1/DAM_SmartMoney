@@ -1,8 +1,11 @@
 package sv.edu.catolica.dam_smartmoney;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -48,7 +51,23 @@ public class VerCategorias extends AppCompatActivity {
 
         DatabaseHelper database = new DatabaseHelper(this);
         List<Categoria> categorias = database.getCategoriasIMG();
-        VerCategoriaAdapter adapter = new VerCategoriaAdapter(this, categorias);
+        VerCategoriaAdapter adapter = new VerCategoriaAdapter(this, categorias, this::onDelete);
         recyclerView.setAdapter(adapter);
+    }
+
+    public void onDelete(Categoria categoria){
+        String titulo = getString(R.string.confirmar_eliminacion_codigo);
+        String mensaje = getString(R.string.confirmar_msg_codigo);
+
+        new AlertDialog.Builder(this)
+            .setTitle(titulo).setMessage(mensaje)
+            .setPositiveButton(getString(R.string.btn_eliminar_codigo), (dialog, which) -> {
+                // Eliminar la categoría y actualizar la lista solo si el usuario confirma
+                DatabaseHelper database = new DatabaseHelper(this);
+                database.deleteCategoria(categoria.getId()); // Método que elimina la categoría en DatabaseHelper
+                CargarCategorias();
+            }).setNegativeButton(getString(R.string.btn_cancelar_codigo), (dialog, which) -> {
+               dialog.dismiss();
+            }).show();
     }
 }
