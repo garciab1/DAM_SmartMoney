@@ -67,5 +67,15 @@ public class eliminargasto extends AppCompatActivity {
         Intent intent = new Intent(eliminargasto.this, Expenses.class);
         startActivity(intent);
         finish();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(eliminargasto.this, Expenses.class);
+        startActivity(intent);
+        finish();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 }

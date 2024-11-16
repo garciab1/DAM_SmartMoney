@@ -73,6 +73,7 @@ public class Expenses extends AppCompatActivity {
                 intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 finish();
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 return true;
             } else if (itemId == R.id.navigation_search) {
                 return true;
@@ -80,11 +81,13 @@ public class Expenses extends AppCompatActivity {
                 intent = new Intent(this, Planning.class);
                 startActivity(intent);
                 finish();
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 return true;
             } else if (itemId == R.id.navigation_about) {
                 intent = new Intent(this, about.class);
                 startActivity(intent);
                 finish();
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 return true;
             }
 
@@ -174,7 +177,7 @@ public class Expenses extends AppCompatActivity {
                 String nombreGasto = nombre.getText().toString();
                 String fechaText = fecha_expence.getText().toString();
                 String tipoPago = getString(R.string.no_importante);
-                String categoria = spinnerCategoria.getSelectedItem().toString();
+                String categoria = spinnerCategoria.getSelectedItem() != null ? spinnerCategoria.getSelectedItem().toString() : "";
 
                 DatabaseHelper db = new DatabaseHelper(Expenses.this);
                 double DineroTotal = db.get_saldo();
@@ -197,6 +200,11 @@ public class Expenses extends AppCompatActivity {
                     return;
                 }
 
+                if (categoria.isEmpty()) {
+                    mensajemanager(getString(R.string.la_categoria_no_puede_estar_vacia));
+                    return;
+                }
+
                 // Convertir la fecha a un objeto Date
                 Date fecha = null;
                 try {
@@ -215,7 +223,11 @@ public class Expenses extends AppCompatActivity {
                     fecha_expence.setText("dd/MM/yyyy");
 
                     mensajemanager(getString(R.string.gasto_creado_correctamente));
-                    startActivity(new Intent(Expenses.this, Expenses.class));
+                    dialog.dismiss();
+                    CargarLista();
+                    verDatos();
+                    //startActivity(new Intent(Expenses.this, Expenses.class));
+                    //finish();
                 } else {
                     mensajemanager(getString(R.string.ocurrio_un_error_al_crear_el_gasto));
                 }
@@ -231,11 +243,14 @@ public class Expenses extends AppCompatActivity {
     public void AbrirCategorias(View view) {
         Intent intent = new Intent(Expenses.this, VerCategorias.class);
         startActivity(intent);
+        finish();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
     //La grafica :O
     public void verDatos() {
         PieChart pieChart = findViewById(R.id.piechart);
+        pieChart.clearChart();
         DatabaseHelper gastoRepository = new DatabaseHelper(Expenses.this);
 
         float totalGasto = gastoRepository.GetTotalGasto();
@@ -291,5 +306,7 @@ public class Expenses extends AppCompatActivity {
     public void VistaEliminar(View view) {
         Intent intent = new Intent(Expenses.this, eliminargasto.class);
         startActivity(intent);
+        finish();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 }

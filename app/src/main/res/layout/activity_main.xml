@@ -108,7 +108,7 @@
 
         </LinearLayout>
 
-        <CalendarView
+        <android.widget.CalendarView
             android:id="@+id/calendarViewMain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

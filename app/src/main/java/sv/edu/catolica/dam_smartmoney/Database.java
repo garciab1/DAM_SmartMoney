@@ -59,11 +59,6 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_CATEGORIA);
         db.execSQL(CREATE_TABLE_GASTO);
         db.execSQL(CREATE_TABLE_PLANNING);
-
-        //Default para categoria
-        String INSERT_DEFAULT_CATEGORIA = "INSERT INTO Categoria (categoria_nombre, tipo_gasto, imagen_uri) " +
-                "VALUES ('Importante', 'Importante', NULL)";
-        db.execSQL(INSERT_DEFAULT_CATEGORIA);
     }
 
     @Override

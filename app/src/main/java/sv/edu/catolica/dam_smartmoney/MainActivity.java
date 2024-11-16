@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         Lista_pagos = findViewById(R.id.list_pagos);
         calendarView = findViewById(R.id.calendarViewMain);
+
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int dayOfMonth) {
@@ -109,24 +110,27 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(this, Expenses.class);
                 startActivity(intent);
                 finish();
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 return true;
             } else if (itemId == R.id.navigation_profile) {
                 intent = new Intent(this, Planning.class);
                 startActivity(intent);
                 finish();
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 return true;
             } else if (itemId == R.id.navigation_about) {
                 intent = new Intent(this, about.class);
                 startActivity(intent);
                 finish();
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 return true;
             }
 
             return false;
         });
 
-
         saldo_total = findViewById(R.id.textView16);
+
         get_money();
         get_important_expences();
         FechaActual();
@@ -214,6 +218,16 @@ public class MainActivity extends AppCompatActivity {
         Button btn_cancel = vista.findViewById(R.id.btn_important_expences_cancel);
         Button btn_ok = vista.findViewById(R.id.btn_important_expences_ok);
         textViewFecha = vista.findViewById(R.id.textView_fecha);
+        Spinner spinnerCat = vista.findViewById(R.id.spinner_categoria_important);
+
+        // Obtener las categorías desde la base de datos
+        DatabaseHelper db = new DatabaseHelper(this);
+        List<String> categorias = db.getCategorias();
+
+        // Crear un adaptador para el Spinner
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categorias);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerCat.setAdapter(adapter);
 
         textViewFecha.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -252,6 +266,7 @@ public class MainActivity extends AppCompatActivity {
                 String nombreGasto = nombre_add.getText().toString();
                 String fechaText = textViewFecha.getText().toString();
                 String tipoPago = getString(R.string.importante); // Aquí lo ajustas si tienes otro valor en mente
+                String categoria = spinnerCat.getSelectedItem() != null ? spinnerCat.getSelectedItem().toString() : "";
                 double SaldoTotal = db.get_saldo();
 
                 if (nombreGasto.isEmpty()) {
@@ -272,6 +287,11 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
+                if (categoria.isEmpty()) {
+                    mensajemanager(getString(R.string.la_categoria_no_puede_estar_vacia));
+                    return;
+                }
+
                 // Convertir la fecha a un objeto Date
                 Date fecha = null;
                 try {
@@ -283,7 +303,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 // Llamar al método crear_gasto con los datos obtenidos
-                boolean crear = db.crear_gasto(fecha, nombreGasto, cantidad, tipoPago, getString(R.string.importante3));
+                boolean crear = db.crear_gasto(fecha, nombreGasto, cantidad, tipoPago, categoria);
                 if (crear){
                     nombre_add.setText("");
                     cantidadField.setText("");

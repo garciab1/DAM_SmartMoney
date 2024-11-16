@@ -92,6 +92,27 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:text="@string/categor_a"
+            android:textAlignment="textEnd"
+            android:textColor="@color/textcolor"
+            android:textSize="20sp" />
+
+        <Spinner
+            android:id="@+id/spinner_categoria_important"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <Button
             android:id="@+id/btn_important_expences_cancel"
             android:layout_width="wrap_content"

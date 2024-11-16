@@ -214,7 +214,8 @@ public class DatabaseHelper {
             if (idFecha == -1) throw new RuntimeException("Error al insertar fecha en la tabla Fechas.");
 
             // Obtener el ID de la categoría
-            int idCategoria = obtenerIdCategoria(db, categoria != null ? categoria : "Importante");
+            int idCategoria = obtenerIdCategoria(db, categoria != null ? categoria : "Important");
+
             if (idCategoria == -1) throw new RuntimeException("Categoría no encontrada en la tabla Categoria.");
 
             // Insertar datos en la tabla Pagos

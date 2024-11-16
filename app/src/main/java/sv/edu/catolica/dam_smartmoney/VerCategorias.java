@@ -42,6 +42,7 @@ public class VerCategorias extends AppCompatActivity {
         Intent intent = new Intent(VerCategorias.this, Expenses.class);
         startActivity(intent);
         finish();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
     private void CargarCategorias(){
@@ -69,5 +70,14 @@ public class VerCategorias extends AppCompatActivity {
             }).setNegativeButton(getString(R.string.btn_cancelar_codigo), (dialog, which) -> {
                dialog.dismiss();
             }).show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(VerCategorias.this, Expenses.class);
+        startActivity(intent);
+        finish();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 }

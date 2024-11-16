@@ -122,4 +122,6 @@
     <string name="btn_update">Update</string>
     <string name="importante3">Importante</string>
     <string name="no_puede_crear_una_categoria_vacia">No puede crear una categoria vacia</string>
+    <string name="btn_calc_dinero_pln">Calcular dinero</string>
+    <string name="la_categoria_no_puede_estar_vacia">La categoria no puede estar vacia</string>
 </resources>

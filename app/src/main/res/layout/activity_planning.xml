@@ -213,22 +213,13 @@
             android:layout_gravity="center">
 
             <Button
-                android:onClick="CalcularGastosporcentaje"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:backgroundTint="#4CAF50"
-                android:layout_marginTop="16dp"
-                android:text="Calcular porcentajes" />
-
-            <Button
                 android:onClick="CalcularGastosdinero"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:backgroundTint="#4CAF50"
                 android:layout_marginTop="16dp"
-                android:text="Calcular dinero" />
+                android:text="@string/btn_calc_dinero_pln" />
         </LinearLayout>
     </LinearLayout>
 

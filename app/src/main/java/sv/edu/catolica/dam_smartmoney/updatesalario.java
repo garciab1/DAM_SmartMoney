@@ -52,6 +52,7 @@ public class updatesalario extends AppCompatActivity {
         Intent intent = new Intent(updatesalario.this, Planning.class);
         startActivity(intent);
         finish();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
     public void SumarElSalario(View view) {
@@ -121,5 +122,14 @@ public class updatesalario extends AppCompatActivity {
 
     public void mensajes(String msg){
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(updatesalario.this, Planning.class);
+        startActivity(intent);
+        finish();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 }

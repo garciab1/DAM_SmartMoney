@@ -51,11 +51,13 @@ public class Planning extends AppCompatActivity {
                 intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 finish();
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 return true;
             } else if (itemId == R.id.navigation_search) {
                 intent = new Intent(this, Expenses.class);
                 startActivity(intent);
                 finish();
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 return true;
             } else if (itemId == R.id.navigation_profile) {
                 return true;
@@ -63,6 +65,7 @@ public class Planning extends AppCompatActivity {
                 intent = new Intent(this, about.class);
                 startActivity(intent);
                 finish();
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 return true;
             }
 
@@ -109,43 +112,6 @@ public class Planning extends AppCompatActivity {
         DatabaseHelper db = new DatabaseHelper(Planning.this);
         double total = db.getsaldototal();
         txtTotal.setText(String.format("%.2f", total));
-    }
-
-    public void CalcularGastosporcentaje(View view) {
-        DatabaseHelper db = new DatabaseHelper(Planning.this);
-
-        // Obtener el dinero total desde el campo correspondiente
-        double total = db.getsaldototal();
-
-        // Obtener los valores de porcentaje ingresados
-        double gastoFijoPercent = txtGastoFijo.getText().toString().isEmpty() ? 0 : Double.parseDouble(txtGastoFijo.getText().toString());
-        double ahorroPercent = txtAhorro.getText().toString().isEmpty() ? 0 : Double.parseDouble(txtAhorro.getText().toString());
-        double inversionPercent = txtInversion.getText().toString().isEmpty() ? 0 : Double.parseDouble(txtInversion.getText().toString());
-
-        // Validar porcentajes
-        double totalPercentage = gastoFijoPercent + ahorroPercent + inversionPercent;
-        if (totalPercentage > 100) {
-            Toast.makeText(this, R.string.el_total_de_los_porcentajes_no_puede_exceder_el_100, Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        // Calcular valores
-        double gastoFijo = total * gastoFijoPercent / 100;
-        double ahorro = total * ahorroPercent / 100;
-        double inversion = total * inversionPercent / 100;
-
-        double restante = total - (gastoFijo + ahorro + inversion);
-
-        // Guardar en la base de datos
-        boolean isSaved = db.insertPlanning(gastoFijo, ahorro, inversion, restante);
-
-        if (isSaved) {
-            Toast.makeText(this, "Guardado correctamente como dinero", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
-        }
-        // Mostrar resultados
-        MostrarResultados(gastoFijo, ahorro, inversion, restante);
     }
 
     @SuppressLint("DefaultLocale")
@@ -202,5 +168,7 @@ public class Planning extends AppCompatActivity {
     public void PantallaUpdate(View view) {
         Intent intent = new Intent(Planning.this, updatesalario.class);
         startActivity(intent);
+        finish();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 }
