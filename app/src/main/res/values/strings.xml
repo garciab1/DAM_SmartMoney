@@ -118,6 +118,8 @@
     <string name="btn_add_salary">Añadir</string>
     <string name="btn_substract_salary">Restar</string>
     <string name="esta_restando_m_s_de_lo_que_tiene_actualmente">Esta restando más de lo que tiene actualmente</string>
-    <string name="calcular">Calcular</string>
+    <string name="calcular">Calcular</string>}
     <string name="btn_update">Update</string>
+    <string name="importante3">Importante</string>
+    <string name="no_puede_crear_una_categoria_vacia">No puede crear una categoria vacia</string>
 </resources>

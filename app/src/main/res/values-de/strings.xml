@@ -112,4 +112,6 @@
     <string name="est_s_seguro_de_que_deseas_eliminar_este_gasto">Sind Sie sicher, dass Sie diese Kosten vermeiden möchten?</string>
     <string name="s">Ja</string>
     <string name="no">Nein</string>
+    <string name="importante3">Wichtig</string>
+    <string name="no_puede_crear_una_categoria_vacia">Es kann keine leere Kategorie erstellt werden</string>
 </resources>

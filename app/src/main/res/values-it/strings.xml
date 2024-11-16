@@ -112,4 +112,6 @@
     <string name="confirmar_eliminaci_n">Conferma l\'eliminazione</string>
     <string name="est_s_seguro_de_que_deseas_eliminar_este_gasto">Sei sicuro di voler eliminare questa spesa?</string>
     <string name="s">Sì</string>
+    <string name="importante3">"Importante "</string>
+    <string name="no_puede_crear_una_categoria_vacia">non è possibile creare una categoria vuota</string>
 </resources>

@@ -89,7 +89,7 @@
     <string name="nada_en_este_d_a">Nothing on this day</string>
     <string name="la_creacion_de_la_categoria_a_sido_exitosa">The creation of the category has been successful</string>
     <string name="ocurrio_un_error_al_mostrar_la_categoria">An error occurred while displaying the category</string>
-    <string name="importante">Importante</string>
+    <string name="importante">Important</string>
     <string name="por_favor_ingresa_un_nombre_para_el_gasto2">Please enter a name for the expense</string>
     <string name="por_favor_ingresa_una_cantidad_v_lida2">Please enter a valid amount</string>
     <string name="no_hay_suficiente_saldo_para_procesar_la_transaccion2">There is not enough balance to process the transaction</string>
@@ -112,4 +112,6 @@
     <string name="est_s_seguro_de_que_deseas_eliminar_este_gasto">Are you sure you want to delete this expense?</string>
     <string name="s">Yes</string>
     <string name="no">No</string>
+    <string name="importante3">Important</string>
+    <string name="no_puede_crear_una_categoria_vacia">" can't create an empty category"</string>
 </resources>
