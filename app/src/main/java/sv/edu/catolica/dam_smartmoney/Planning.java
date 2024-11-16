@@ -2,6 +2,7 @@ package sv.edu.catolica.dam_smartmoney;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -74,6 +75,33 @@ public class Planning extends AppCompatActivity {
         txtInversion = findViewById(R.id.txt_planning_inversion);
         txtTotalSobrante = findViewById(R.id.TotalSobrante);
         DineroTotal();
+        CargarUltimosDatos();
+    }
+
+    private void CargarUltimosDatos(){
+        DatabaseHelper db = new DatabaseHelper(this);
+        Cursor cursor = db.getLastPlanning();
+
+        if (cursor != null && cursor.moveToFirst()) {
+            // Extraer los datos del último registro
+            double gastoFijo = cursor.getDouble(cursor.getColumnIndexOrThrow("gastos_fijos"));
+            double ahorro = cursor.getDouble(cursor.getColumnIndexOrThrow("ahorros"));
+            double inversion = cursor.getDouble(cursor.getColumnIndexOrThrow("inversion"));
+            double restante = cursor.getDouble(cursor.getColumnIndexOrThrow("restante"));
+
+            // Mostrar los datos en los campos de texto
+            txtGastoFijo.setText(String.format("%.2f", gastoFijo));
+            txtAhorro.setText(String.format("%.2f", ahorro));
+            txtInversion.setText(String.format("%.2f", inversion));
+            txtTotalSobrante.setText(String.format(getString(R.string.total_disponible_2f), restante));
+
+            // Mostrar los datos en el PieChart
+            MostrarResultados(gastoFijo, ahorro, inversion, restante);
+        }
+
+        if (cursor != null) {
+            cursor.close();
+        }
     }
 
     @SuppressLint("DefaultLocale")
@@ -83,31 +111,71 @@ public class Planning extends AppCompatActivity {
         txtTotal.setText(String.format("%.2f", total));
     }
 
-    @SuppressLint("DefaultLocale")
-    public void CalcularGastos(View view) {
+    public void CalcularGastosporcentaje(View view) {
         DatabaseHelper db = new DatabaseHelper(Planning.this);
 
         // Obtener el dinero total desde el campo correspondiente
         double total = db.getsaldototal();
 
-        // Obtener los valores de porcentaje ingresados en cada campo
-        int gastoFijoPercent = txtGastoFijo.getText().toString().isEmpty() ? 0 : Integer.parseInt(txtGastoFijo.getText().toString());
-        int ahorroPercent = txtAhorro.getText().toString().isEmpty() ? 0 : Integer.parseInt(txtAhorro.getText().toString());
-        int inversionPercent = txtInversion.getText().toString().isEmpty() ? 0 : Integer.parseInt(txtInversion.getText().toString());
+        // Obtener los valores de porcentaje ingresados
+        double gastoFijoPercent = txtGastoFijo.getText().toString().isEmpty() ? 0 : Double.parseDouble(txtGastoFijo.getText().toString());
+        double ahorroPercent = txtAhorro.getText().toString().isEmpty() ? 0 : Double.parseDouble(txtAhorro.getText().toString());
+        double inversionPercent = txtInversion.getText().toString().isEmpty() ? 0 : Double.parseDouble(txtInversion.getText().toString());
 
-        // Calcular el valor real de cada categoría
-        double gastoFijo = total * gastoFijoPercent / 100;
-        double ahorro = total * ahorroPercent / 100;
-        double inversion = total * inversionPercent / 100;
-
-        // Verificar que el porcentaje total no exceda el 100%
-        int totalPercentage = gastoFijoPercent + ahorroPercent + inversionPercent;
+        // Validar porcentajes
+        double totalPercentage = gastoFijoPercent + ahorroPercent + inversionPercent;
         if (totalPercentage > 100) {
             Toast.makeText(this, R.string.el_total_de_los_porcentajes_no_puede_exceder_el_100, Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Mostrar resultados en el PieChart
+        // Calcular valores
+        double gastoFijo = total * gastoFijoPercent / 100;
+        double ahorro = total * ahorroPercent / 100;
+        double inversion = total * inversionPercent / 100;
+
+        double restante = total - (gastoFijo + ahorro + inversion);
+
+        // Guardar en la base de datos
+        boolean isSaved = db.insertPlanning(gastoFijo, ahorro, inversion, restante);
+
+        if (isSaved) {
+            Toast.makeText(this, "Guardado correctamente como dinero", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Error al guardar los datos", Toast.LENGTH_SHORT).show();
+        }
+        // Mostrar resultados
+        MostrarResultados(gastoFijo, ahorro, inversion, restante);
+    }
+
+    @SuppressLint("DefaultLocale")
+    public void CalcularGastosdinero(View view) {
+        DatabaseHelper db = new DatabaseHelper(Planning.this);
+
+        // Obtener el dinero total desde el campo correspondiente
+        double total = db.getsaldototal();
+
+        // Obtener los valores de dinero ingresados
+        double gastoFijo = txtGastoFijo.getText().toString().isEmpty() ? 0 : Double.parseDouble(txtGastoFijo.getText().toString());
+        double ahorro = txtAhorro.getText().toString().isEmpty() ? 0 : Double.parseDouble(txtAhorro.getText().toString());
+        double inversion = txtInversion.getText().toString().isEmpty() ? 0 : Double.parseDouble(txtInversion.getText().toString());
+
+        if (gastoFijo + ahorro + inversion > total) {
+            Toast.makeText(this, "Los valores ingresados no pueden superar el total", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        double restante = total - (gastoFijo + ahorro + inversion);
+
+        // Guardar en la base de datos
+        db.insertPlanning(gastoFijo, ahorro, inversion, restante);
+
+        // Mostrar resultados
+        MostrarResultados(gastoFijo, ahorro, inversion, restante);
+    }
+
+    private void MostrarResultados(double gastoFijo, double ahorro, double inversion, double restante) {
+        // Mostrar en el PieChart
         PieChart pieChart = findViewById(R.id.piechart);
         pieChart.clearChart();
 
@@ -117,7 +185,7 @@ public class Planning extends AppCompatActivity {
 
         pieChart.startAnimation();
 
-        // Mostrar resultados en la lista
+        // Mostrar en el ListView
         ListView listaPlanning = findViewById(R.id.lista_planning);
         String[] items = {
                 String.format(getString(R.string.gasto_fijo_2f), gastoFijo),
@@ -125,7 +193,7 @@ public class Planning extends AppCompatActivity {
                 String.format(getString(R.string.inversi_n_2f), inversion),
         };
 
-        txtTotalSobrante.setText(String.format(getString(R.string.total_disponible_2f), total - (gastoFijo + ahorro + inversion)));
+        txtTotalSobrante.setText(String.format(getString(R.string.total_disponible_2f), restante));
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
         listaPlanning.setAdapter(adapter);

@@ -7,7 +7,6 @@
     <string name="mes">Mes</string>
     <string name="add">+ Agregar Gasto</string>
     <string name="add_symbol" translatable="false">+</string>
-    <string name="calcular">Calcular</string>
     <string name="money">$$.$$</string>
     <string name="percentage" translatable="false">%%.%%</string>
     <string name="ok" translatable="false">OK</string>

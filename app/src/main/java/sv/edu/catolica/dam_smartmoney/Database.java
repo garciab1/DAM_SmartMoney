@@ -45,12 +45,12 @@ public class Database extends SQLiteOpenHelper {
                 "FOREIGN KEY (categoria_gasto) REFERENCES Categoria(id), " +
                 "FOREIGN KEY (pago_gasto) REFERENCES Pagos(id))";
 
-        String CREATE_TABLE_HISTORIAL_INGRESOS = "CREATE TABLE Historial_Ingresos " +
-                "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "usuario_id INTEGER, " +
-                "cantidad DECIMAL NOT NULL, " +
-                "fecha_actualizacion DATE NOT NULL, " +
-                "FOREIGN KEY (usuario_id) REFERENCES Usuarios(id))";
+        String CREATE_TABLE_PLANNING = "CREATE TABLE Planning" +
+                "(id INTEGER PRIMARY KEY, " +
+                "gastos_fijos DECIMAL, " +
+                "ahorros DECIMAL, " +
+                "inversion DECIMAL, " +
+                "restante DECIMAL)";
 
         // Ejecutar las consultas SQL para crear las tablas
         db.execSQL(CREATE_TABLE_USUARIOS);
@@ -58,7 +58,7 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_FECHAS);
         db.execSQL(CREATE_TABLE_CATEGORIA);
         db.execSQL(CREATE_TABLE_GASTO);
-        db.execSQL(CREATE_TABLE_HISTORIAL_INGRESOS);
+        db.execSQL(CREATE_TABLE_PLANNING);
 
         //Default para categoria
         String INSERT_DEFAULT_CATEGORIA = "INSERT INTO Categoria (categoria_nombre, tipo_gasto, imagen_uri) " +
@@ -73,7 +73,7 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS Fechas");
         db.execSQL("DROP TABLE IF EXISTS Categoria");
         db.execSQL("DROP TABLE IF EXISTS Gasto");
-        db.execSQL("DROP TABLE IF EXISTS Historial_Ingresos");
+        db.execSQL("DROP TABLE IF EXISTS Planning");
         onCreate(db);
     }
 }

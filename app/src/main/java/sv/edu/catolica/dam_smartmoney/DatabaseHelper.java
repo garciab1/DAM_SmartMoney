@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.ContactsContract;
 import android.util.Log;
 
@@ -494,6 +495,28 @@ public class DatabaseHelper {
 
         cursor.close();
         return cantidad;
+    }
+
+    //para planning guardar
+    public boolean insertPlanning(double gastoFijo, double ahorro, double inversion, double restante) {
+        Database database = new Database(context);
+        SQLiteDatabase db = database.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("gastos_fijos", gastoFijo);
+        values.put("ahorros", ahorro);
+        values.put("inversion", inversion);
+        values.put("restante", restante);
+
+        long result = db.insert("Planning", null, values);
+        return result != -1;
+    }
+
+    //Para cargar los datos al incio
+    public Cursor getLastPlanning(){
+        Database database = new Database(context);
+        SQLiteDatabase db = database.getWritableDatabase();
+        return db.rawQuery("SELECT * FROM Planning ORDER BY id DESC LIMIT 1", null);
     }
 
 }
