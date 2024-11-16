@@ -7,6 +7,13 @@
     <string name="inversion">Investition:</string>
     <string name="mes">Monat</string>
     <string name="add">+Hinzufügen</string>
+    <string name="confirmar_eliminacion_codigo">Bestätigen Sie den Löschvorgang</string>
+    <string name="confirmar_msg_codigo">" Alle Ausgaben im Zusammenhang mit dieser Kategorie werden eliminiert. Bist du sicher?"</string>
+    <string name="btn_eliminar_codigo">Eliminar</string>
+    <string name="btn_cancelar_codigo">"Stornieren "</string>
+    <string name="btn_add_salary">"Hinzufügen "</string>
+    <string name="btn_substract_salary">"Subtrahieren "</string>
+    <string name="esta_restando_m_s_de_lo_que_tiene_actualmente">"Sie ziehen mehr ab, als Sie derzeit haben. "</string>
     <string name="calcular">Berechnen</string>
     <string name="money">€€:€€</string>
     <string name="x">Stornieren</string>

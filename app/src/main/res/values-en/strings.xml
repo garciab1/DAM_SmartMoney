@@ -7,6 +7,13 @@
     <string name="inversion">Investment:</string>
     <string name="mes">Month</string>
     <string name="add">+Add</string>
+    <string name="confirmar_eliminacion_codigo">" Confirm Deletion"</string>
+    <string name="confirmar_msg_codigo">All expenses related to this category will be eliminated. Are you sure?</string>
+    <string name="btn_eliminar_codigo">Delet</string>
+    <string name="btn_cancelar_codigo">"Cancel "</string>
+    <string name="btn_add_salary">Add</string>
+    <string name="btn_substract_salary">"Subtract "</string>
+    <string name="esta_restando_m_s_de_lo_que_tiene_actualmente">"You are subtracting more than you currently have. "</string>
     <string name="calcular">Calculate</string>
     <string name="x">Cancel</string>
     <string name="descripcion">Category type</string>

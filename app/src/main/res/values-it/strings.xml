@@ -5,6 +5,14 @@
     <string name="total">Totale</string>
     <string name="mes">Mese</string>
     <string name="add">+Aggiungere</string>
+    <string name="no">No</string>
+    <string name="confirmar_eliminacion_codigo">Conferma l\'eliminazione</string>
+    <string name="confirmar_msg_codigo">" Tutte le spese relative a questa categoria verranno eliminate. Sei sicuro?"</string>
+    <string name="btn_eliminar_codigo">"Eliminare "</string>
+    <string name="btn_cancelar_codigo">"Cancellare "</string>
+    <string name="btn_add_salary">"Aggiungere "</string>
+    <string name="btn_substract_salary">"Sottrarre "</string>
+    <string name="esta_restando_m_s_de_lo_que_tiene_actualmente">"Stai sottraendo più di quello che hai attualmente. "</string>
     <string name="calcular">Calcolare</string>
     <string name="x">Cancellare</string>
     <string name="descripcion">tipo di categoria</string>
@@ -104,5 +112,4 @@
     <string name="confirmar_eliminaci_n">Conferma l\'eliminazione</string>
     <string name="est_s_seguro_de_que_deseas_eliminar_este_gasto">Sei sicuro di voler eliminare questa spesa?</string>
     <string name="s">Sì</string>
-    <string name="no">No</string>
 </resources>
