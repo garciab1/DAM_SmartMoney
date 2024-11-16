@@ -89,6 +89,8 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("fecha", fechaSeleccionada);
                     intent.putExtra("evento", evento);
                     startActivity(intent);
+                    finish();
+                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 } else {
                     // Si no hay evento, mostrar Toast
                     int duracion = 800;
