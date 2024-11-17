@@ -82,7 +82,7 @@
         android:hint="@string/enter_user_name"
         android:importantForAutofill="no"
         android:inputType="text"
-        android:textColorHint="@color/textcolor"
+        android:textColorHint="@color/BackGroundN"
         android:textSize="24sp" />
 
     <EditText
@@ -94,7 +94,7 @@
         android:hint="@string/money"
         android:importantForAutofill="no"
         android:inputType="numberDecimal"
-        android:textColorHint="@color/textcolor"
+        android:textColorHint="@color/BackGroundN"
         android:textSize="24sp" />
 
     <Button

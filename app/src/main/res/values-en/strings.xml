@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">DAM-SmartMoney</string>
-    <string name="gastos_fijos">Fixed expenses %:</string>
+    <string name="gastos_fijos">Fixed expenses :</string>
     <string name="total">Total:</string>
     <string name="ahorros">Savings</string>
     <string name="inversion">Investment:</string>
@@ -49,8 +49,8 @@
     <string name="categoria3">Category</string>
     <string name="a_adir_imagen">Add image</string>
     <string name="dinero_total">Total money:</string>
-    <string name="ahorros2">Savings %</string>
-    <string name="inversi_n">Investment %:</string>
+    <string name="ahorros2">"Savings "</string>
+    <string name="inversi_n">Investment :</string>
     <string name="total_sobrante">Total remaining:</string>
     <string name="dinero_inicial">Initial money:</string>
     <string name="categor_a">Category:</string>
@@ -66,7 +66,7 @@
     <string name="btn_manejar_gastos">Managing expenses</string>
     <string name="actualizar_salario2">Update salary</string>
     <string name="agregas_gasto">+ Add Expense</string>
-    <string name="ingresa_el_de_ahorros2">Savings %:</string>
+    <string name="ingresa_el_de_ahorros2">Savings :</string>
     <string name="nombre_de_categor_a">Name of category</string>
     <string name="nombre_del_gasto">"Expense name "</string>
     <string name="cantidad5">Amount</string>
@@ -114,4 +114,7 @@
     <string name="no">No</string>
     <string name="importante3">Important</string>
     <string name="no_puede_crear_una_categoria_vacia">" can't create an empty category"</string>
+    <string name="btn_calc_dinero_pln">"Calculate money "</string>
+    <string name="la_categoria_no_puede_estar_vacia">"The category cannot be empty "</string>
+    <string name="la_categoria_no_puede_estar_vacia">"The category cannot be empty "</string>
 </resources>
