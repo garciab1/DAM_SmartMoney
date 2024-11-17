@@ -54,7 +54,12 @@ public class welcome extends AppCompatActivity {
             return;
         }
 
-        double monto;
+        double monto = 0;
+
+        if (monto <= 0){
+            mensajes(getString(R.string.monto_no_v_lido));
+        }
+
         try {
             monto = Double.parseDouble(montoString);
         } catch (NumberFormatException e) {
