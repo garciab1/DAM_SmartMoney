@@ -49,20 +49,21 @@ public class welcome extends AppCompatActivity {
         String montoString = textomonto.getText().toString().trim();
 
         // Validación de entradas
-        if (nombre.isEmpty()) {
+        if (nombre.isEmpty())
+        {
             mensajes(getString(R.string.el_campo_de_nombre_est_vac_o));
             return;
         }
 
         double monto = 0;
 
-        if (monto <= 0){
-            mensajes(getString(R.string.monto_no_v_lido));
-            return;
-        }
-
         try {
             monto = Double.parseDouble(montoString);
+            if (monto <= 0)
+            {
+                mensajes(getString(R.string.monto_no_v_lido));
+                return;
+            }
         } catch (NumberFormatException e) {
             mensajes(getString(R.string.monto_no_v_lido));
             return;
@@ -79,7 +80,10 @@ public class welcome extends AppCompatActivity {
         } else {
             mensajes(getString(R.string.ocurri_un_error_al_crear_el_usuario));
         }
+
+
     }
+
 
     private void mensajes(String mensaje) {
         Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
