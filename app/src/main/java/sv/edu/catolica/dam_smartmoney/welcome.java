@@ -58,6 +58,7 @@ public class welcome extends AppCompatActivity {
 
         if (monto <= 0){
             mensajes(getString(R.string.monto_no_v_lido));
+            return;
         }
 
         try {
